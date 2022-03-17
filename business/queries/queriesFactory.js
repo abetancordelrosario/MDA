@@ -1,13 +1,18 @@
-let repoAbstractFactory = require("../../infrastructure/repositories/repoAbstractFactory.js")
+let repoAbstractFactory = require("../../infrastructure/repositories/repoAbstractFactory.js"),
+    getUser = require("./getUser.js");
 
 let queriesFactory =
 {
-    
+    getUser: function()
+    {
+        let action = getUser(getConnectionProvider());
+        return action
+    }
 };
 
-function getConnectionProvider(repository)
+function getConnectionProvider()
 {
-    return repoAbstractFactory.getConnectionProvider(repository);
+    return repoAbstractFactory.getConnectionProvider();
 }
 
 module.exports = queriesFactory;

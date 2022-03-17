@@ -1,4 +1,3 @@
-
 let repoAbstractFactory = require("../infrastructure/repositories/repoAbstractFactory.js");
 
 const IS_TEST_ENV = true;
@@ -16,9 +15,8 @@ function deleteRepositoryContent()
     return new Promise(function(resolve, reject)
     {
         let repoConnection = repoAbstractFactory.getConnectionProvider(IS_TEST_ENV);
-        Promise.all([
-            truncateMySQLTable("users", repoConnection),
-        ])
+        
+        truncateMySQLTable("users", repoConnection)
         .then(function()
         {
             resolve();
@@ -58,8 +56,8 @@ function givenAnyUser(contentInfo)
         let repoTable = "users";
         let repoColumns = "NAME, SURNAME, DISPLAY_NAME, EMAIL, PHONE, PASSWD, ROL, POINTS, ORGANIZATION, TIME_STAMP";
 
-        let sql = "INSERT INTO "+repoTable+" ("+repoColumns+") VALUES ?";
-        repoConnection.query(sql, [contentInfo.name, contentInfo,surname, contentInfo.display_name, contentInfo.email, contentInfo.phone, contentInfo.passwd, contentInfo.resolve, contentInfo.points, contentInfo.organization, contentInfo.time_stamp], function(error)
+        let sql = "INSERT INTO "+repoTable+" ("+repoColumns+") VALUES (?,?,?,?,?,?,?,?,?,?)";
+        repoConnection.query(sql, [contentInfo.name, contentInfo.surname, contentInfo.display_name, contentInfo.email, contentInfo.phone, contentInfo.passwd, contentInfo.rol, contentInfo.points, contentInfo.organization, contentInfo.time_stamp], function(error)
         {
             if (error)
             {
