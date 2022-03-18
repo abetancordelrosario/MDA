@@ -20,7 +20,10 @@
   },
   "homepage": "https://github.com/abetancordelrosario/MDA#readme",
   "dependencies": {
-    "express": "^4.17.3"
+    "dotenv": "^16.0.0",
+    "express": "^4.17.3",
+    "md5": "^2.3.0",
+    "mysql": "^2.18.1"
   },
   "devDependencies": {
     "chai": "^4.3.6",
