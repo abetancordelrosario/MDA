@@ -1,9 +1,12 @@
 let assert = require("chai").assert,
-    testSetupContents = require("../../testSetupContents.js"),
+    testSetupContents = require("../testSetupContents.js"),
     md5 = require("md5"),
-    queriesFactory = require("../../../business/commands/commandsFactory.js");
+    queriesFactory = require("../../business/commands/commandsFactory.js"),
+    app = require("../../app.js"),
+    supertest = require("supertest"),
+    appAgent = supertest.agent(app);
 
-describe ("Business / Commnand / User", function()
+describe ("Controllers / User / API", function()
 {
     beforeEach(function(done)
     {
@@ -32,7 +35,7 @@ describe ("Business / Commnand / User", function()
             time_stamp: "17/03/2022 12:13:25"
         }
         
-        await queriesFactory.insertUser().execute(anyUserInfo);
+        await appAgent.post("/api/users").send(anyUserInfo)
         let results = await testSetupContents().getAnyUser({name: "nombre1", surname: "apellidos1"});
 
         assert.equal(results[0].NAME, "nombre1");
