@@ -6,7 +6,8 @@ let testSetupContents = function()
 {
     return {
         deleteRepositoryContent,
-        givenAnyUser
+        givenAnyUser,
+        getAnyUser
     };
 };
 
@@ -70,6 +71,27 @@ function givenAnyUser(contentInfo)
         });
 
 
+    });
+}
+
+function getAnyUser(contentInfo)
+{
+    return new Promise(function(resolve, reject){
+        let repoConnection = repoAbstractFactory.getConnectionProvider(IS_TEST_ENV);
+        let repoTable = "users"
+        
+        let sql = "SELECT * FROM "+repoTable+" WHERE NAME=? AND SURNAME=?";
+        repoConnection.query(sql, [contentInfo.name, contentInfo.surname], function(error, result)
+        {
+            if (error)
+            {
+                reject(error);
+            }
+            else
+            {
+                resolve(result);
+            }
+        });
     });
 }
 
