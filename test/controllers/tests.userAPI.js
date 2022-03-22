@@ -37,7 +37,7 @@ describe ("Controllers / User / API", function()
         
         await appAgent.post("/api/users").send(anyUserInfo)
         let results = await testSetupContents().getAnyUser({name: "nombre1", surname: "apellidos1"});
-
+        
         assert.equal(results[0].NAME, "nombre1");
         assert.equal(results[0].PASSWD, password);
     })
