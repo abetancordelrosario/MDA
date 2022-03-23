@@ -28,7 +28,8 @@ describe ("Controllers / User / API", function()
             passwd: password
         }
         
-        const results = await appAgent.get("/api/users").send(anyUserInfo);
+        const response = await appAgent.get("/api/users").send(anyUserInfo);
+        let results = JSON.parse(response.text);
         
         assert.equal(results[0].DISPLAY_NAME, "display1");
         assert.equal(results[0].PASSWD, password);
