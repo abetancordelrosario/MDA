@@ -30,5 +30,5 @@ describe("Business / Queries / User", function()
         
         assert.equal(results[0].DISPLAY_NAME, "display1");
         assert.equal(results[0].PASSWD, password);
-    })
+    });
 });

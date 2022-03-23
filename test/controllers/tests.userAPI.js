@@ -19,6 +19,21 @@ describe ("Controllers / User / API", function()
         })
     });
 
+    it("Should return user info", async() =>
+    {
+        const password = md5("1234");
+        await testSetupContents().givenAnyUser({name: "nombre1", surname: "apellidos1", display_name: "display1", email: "email1@gmail.com", phone: "123 456 789", passwd: password, rol: 0, points: 5, organization: "ULPGC", time_stamp: "17/03/2022 12:13:25"});
+        let anyUserInfo = {
+            display_name: "display1",
+            passwd: password
+        }
+        
+        const results = await appAgent.get("/api/users").send(anyUserInfo);
+        
+        assert.equal(results[0].DISPLAY_NAME, "display1");
+        assert.equal(results[0].PASSWD, password);
+    });
+
     it("Should insert user info", async() =>
     {
         const password = md5("1234");
@@ -35,7 +50,7 @@ describe ("Controllers / User / API", function()
             time_stamp: "17/03/2022 12:13:25"
         }
         
-        await appAgent.post("/api/users").send(anyUserInfo)
+        await appAgent.post("/api/users").send(anyUserInfo);
         let results = await testSetupContents().getAnyUser({name: "nombre1", surname: "apellidos1"});
         
         assert.equal(results[0].NAME, "nombre1");
