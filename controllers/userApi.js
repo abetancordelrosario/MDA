@@ -12,6 +12,15 @@ router.route("/")
     }).catch(function(error) {
         response.status(400).send("Error:" +error.message)
     })
+})
+.delete(function(request, response){
+    anyUserId = request.body
+    commandsFactory.deleteUser().execute(anyUserId)
+    .then(function(result) {
+        response.status(200).send("Is OK")
+    }).catch(function(error) {
+        response.status(400).send("Error:" +error.message)
+    })
 });
 
 module.exports = router
