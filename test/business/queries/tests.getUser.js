@@ -27,7 +27,7 @@ describe("Business / Queries / User", function()
         }
         
         const results = await queriesFactory.getUser().execute(anyUserInfo);
-
+        
         assert.equal(results[0].DISPLAY_NAME, "display1");
         assert.equal(results[0].PASSWD, password);
     })

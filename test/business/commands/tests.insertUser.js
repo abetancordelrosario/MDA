@@ -1,9 +1,9 @@
 let assert = require("chai").assert,
     testSetupContents = require("../../testSetupContents.js"),
     md5 = require("md5"),
-    queriesFactory = require("../../../business/commands/commandsFactory.js");
+    commandFactory = require("../../../business/commands/commandsFactory.js");
 
-describe ("Business / Commnand / User", function()
+describe ("Business / Command / User", function()
 {
     beforeEach(function(done)
     {
@@ -32,10 +32,10 @@ describe ("Business / Commnand / User", function()
             time_stamp: "17/03/2022 12:13:25"
         }
         
-        await queriesFactory.insertUser().execute(anyUserInfo);
+        await commandFactory.insertUser().execute(anyUserInfo);
         let results = await testSetupContents().getAnyUser({name: "nombre1", surname: "apellidos1"});
-
         assert.equal(results[0].NAME, "nombre1");
         assert.equal(results[0].PASSWD, password);
+        
     })
 });

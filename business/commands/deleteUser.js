@@ -1,14 +1,14 @@
-let getUser = function(connectionProvider)
+let deleteUser = function(connectionProvider)
 {
     return {
         execute: function(userInfo)
         {
             return new Promise(function(resolve, reject)
             {
-                getUserQuery(connectionProvider, userInfo)
-                .then(function(results)
+                deleteUserQuery(connectionProvider, userInfo)
+                .then(function()
                 {
-                    resolve(results);
+                    resolve();
                 })
                 .catch(function(error)
                 {
@@ -19,15 +19,15 @@ let getUser = function(connectionProvider)
     }
 }
 
-function getUserQuery(connectionProvider, userInfo)
+
+function deleteUserQuery(connectionProvider, userInfo)
 {
     return new Promise(function(resolve, reject)
-    {
-        
-        let sqlQuery = "SELECT DISPLAY_NAME, PASSWD FROM users WHERE DISPLAY_NAME=? AND PASSWD=?";
-        connectionProvider.query(sqlQuery, [userInfo.display_name, userInfo.passwd],
+    {        
+        let sqlQuery = "DELETE FROM users WHERE ID=?";
+        connectionProvider.query(sqlQuery,[userInfo.ID],
             
-            function(error, results)
+            function(error)
             {
                 if (error)
                 {
@@ -35,10 +35,9 @@ function getUserQuery(connectionProvider, userInfo)
                 }
                 else
                 {
-                    resolve(results);
+                    resolve();
                 }
             })
     })
 }
-
-module.exports = getUser;
+module.exports = deleteUser;
