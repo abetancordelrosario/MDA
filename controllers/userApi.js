@@ -30,6 +30,15 @@ router.route("/")
     }).catch(function(error) {
         response.status(400).send("Error:" +error.message)
     })
+})
+.put(function(request, response){
+    updateData = request.body
+    commandsFactory.updateUser().execute(updateData)
+    .then(function(result) {
+        response.status(200).send("Is OK")
+    }).catch(function(error) {
+        response.status(400).send("Error:" +error.message)
+    })
 });
 
 module.exports = router
