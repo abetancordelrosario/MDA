@@ -1,0 +1,26 @@
+.container-button {
+    justify-content: center;
+    display: flex;
+}
+
+.container-button a {
+    background-color: blue;
+    padding: 10px 20px 10px 20px;
+    border-radius: 10px;
+    color: #f7f7f7;
+    text-decoration: none;
+}
+
+.container-button a:hover {
+    color: #f7f7f7;
+    box-shadow: 0 0 8px 5px rgba(255, 255, 255, 0.05);
+}
+
+.login-form {
+    padding: 10px;
+}
+
+.login-button, .passwd {
+    display: flex;
+    justify-content: center;
+}

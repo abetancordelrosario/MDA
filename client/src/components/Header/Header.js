@@ -1,5 +1,6 @@
 import React from 'react';
 import './Header.css';
+import Login from "../Login/Login";
 
 function Header () {
     return (
@@ -12,7 +13,7 @@ function Header () {
                 </div>
                 <div className='col-lg-6 login'>
                     <div id="login-button">
-                        <a href="#!">Iniciar Sesión</a>
+                        <Login />
                     </div>
                 </div>
             </div>
