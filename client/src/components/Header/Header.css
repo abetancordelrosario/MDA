@@ -1,0 +1,65 @@
+header {
+    background-color: #f7f7f7;
+    border-bottom: 2px solid blue;
+    position: relative;
+    padding-top: 0.625rem;
+    padding-bottom: 0.625rem;
+}
+
+#brand-logo {
+    display: flex;
+    justify-content: left;
+    margin-left: 50px;
+}
+
+#brand-logo a {
+    text-decoration: none;
+    color: blue;
+}
+
+.login {
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    padding-right: 0.625rem;
+}
+
+#login-button {
+    display: inline-block;
+    background-color: blue;
+    padding: 10px 20px 10px 20px;
+    border-radius: 10px;
+    margin-right: 50px
+}
+
+#login-button:hover {
+    box-shadow: 0 0 8px 5px rgba(0, 0, 0, 0.15);
+    text-decoration: none;
+}
+
+#login-button a {
+    text-decoration: none;
+    color: #f7f7f7;
+}
+
+#login-button a:hover {
+    text-decoration: underline;
+}
+
+@media screen and (max-width: 991px) {
+    #brand-logo {
+        justify-content: center;
+        margin: 0
+    }
+
+    .login {
+        justify-content: center;
+    }
+
+    #login-button {
+        margin: 0;
+        margin-top: 20px
+    }
+
+
+}
