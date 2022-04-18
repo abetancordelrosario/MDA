@@ -1,4 +1,4 @@
-import {React} from 'react';
+import {React, useState, useEffect} from 'react';
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
 import './Login.css';
@@ -6,16 +6,12 @@ import './Login.css';
 
 const Login = () => {
      
-    const handleSubmit = async (e) => {
-        const username = document.getElementById("form2Example1").value;
-        const password = document.getElementById("form2Example31").value;
-        
-    }
 
-        return (
+
+    return (
         <Popup trigger={<a href='#!' class="container-button">Iniciar Sesión</a>} position="bottom center">
             <div className="login-form">
-            <form onSubmit={handleSubmit}>
+            <form>
                 <div className="form-outline mb-4">
                 <label className="form-label" htmlFor="form2Example1">Usuario</label>
                     <input 
