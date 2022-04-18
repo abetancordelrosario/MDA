@@ -5,7 +5,6 @@ import './Login.css';
 
 
 const Login = () => {
-     
     const handleSubmit = async (e) => {
         const username = document.getElementById("form2Example1").value;
         const password = document.getElementById("form2Example31").value;
