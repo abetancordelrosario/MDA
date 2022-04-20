@@ -28,4 +28,19 @@ describe ("Controllers / Messages / API", function()
         
         assert.equal(results[0].MESSAGE, "Mensaje de Prueba");
     });
+
+    it("Should return all messages for a specified subject", async() =>
+    {
+        await testSetupContents().givenAnyMessage({subjectid: 1, userid: 1, message: "Mensaje de Prueba"});
+        await testSetupContents().givenAnyMessage({subjectid: 1, userid: 2, message: "Mensaje de Prueba 2"});
+        await testSetupContents().givenAnyMessage({subjectid: 2, userid: 3, message: "Mensaje de Prueba 3"});
+        let anyUserSubjectId = 1
+        
+        const response = await appAgent.get("/api/messages/?subjectid=1");
+        let results = JSON.parse(response.text);
+
+        assert.equal(results.length, 2);
+        assert.equal(results[0].MESSAGE, "Mensaje de Prueba");
+        assert.equal(results[1].MESSAGE, "Mensaje de Prueba 2");
+    });
 });
