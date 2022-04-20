@@ -14,6 +14,16 @@ router.route("/response")
         response.status(400).send("Error:" +error.message)
     })
 })
+.delete(function(request, response){
+    
+    let responseToDelete = request.body;
+    commandsFactory.deleteResponse().execute(responseToDelete)
+    .then(function(result) {
+        response.status(200).send(result);
+    }).catch(function(error) {
+        response.status(400).send("Error:" +error.message)
+    })
+});
 
 router.route("/")
 .get(function(request, response){
