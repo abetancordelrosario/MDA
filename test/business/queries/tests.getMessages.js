@@ -3,7 +3,7 @@ let assert = require("chai").assert,
     md5 = require("md5"),
     queriesFactory = require("../../../business/queries/queriesFactory.js");
 
-describe("Business / Queries / User", function()
+describe("Business / Queries / Messages", function()
 {
     beforeEach(function(done)
     {
