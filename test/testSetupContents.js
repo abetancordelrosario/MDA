@@ -146,5 +146,26 @@ function getAnyMessages(contentInfo)
     });
 }
 
+function getAnyResponse(contentInfo)
+{
+    return new Promise(function(resolve, reject){
+        let repoConnection = repoAbstractFactory.getConnectionProvider(IS_TEST_ENV);
+        let repoTable = "messages"
+        
+        let sql = "SELECT RESPONSES FROM "+repoTable+" WHERE ID=?";
+        repoConnection.query(sql, [contentInfo.messageid], function(error, result)
+        {
+            if (error)
+            {
+                reject(error);
+            }
+            else
+            {
+                resolve(JSON.parse(result));
+            }
+        });
+    });
+}
+
 
 module.exports = testSetupContents;
