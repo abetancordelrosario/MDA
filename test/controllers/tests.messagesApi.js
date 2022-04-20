@@ -43,4 +43,19 @@ describe ("Controllers / Messages / API", function()
         assert.equal(results[0].MESSAGE, "Mensaje de Prueba");
         assert.equal(results[1].MESSAGE, "Mensaje de Prueba 2");
     });
+
+    it("Should insert a message for a specified user and subject", async() =>
+    {
+        let anyMessageInfo = {
+            subjectid: 1, 
+            userid: 1, 
+            message: "Mensaje de Prueba"
+        }
+        
+        const response = await appAgent.post("/api/messages").send(anyMessageInfo);
+
+        let results = await testSetupContents().getAnyMessages({subjectid: 1});
+        assert.isArray(results);
+        assert.equal(results[0].MESSAGE, "Mensaje de Prueba");
+    })
 });
