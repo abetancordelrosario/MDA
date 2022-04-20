@@ -3,6 +3,18 @@ let express = require("express"),
     queriesFactory = require("../business/queries/queriesFactory"),
     commandsFactory = require("../business/commands/commandsFactory");
 
+router.route("/response")
+.post(function(request, response){
+    
+    let responseInfo = request.body;
+    commandsFactory.insertResponse().execute(responseInfo)
+    .then(function(result) {
+        response.status(200).send(result);
+    }).catch(function(error) {
+        response.status(400).send("Error:" +error.message)
+    })
+})
+
 router.route("/")
 .get(function(request, response){
     
