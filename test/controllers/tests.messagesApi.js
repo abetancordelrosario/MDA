@@ -52,7 +52,7 @@ describe ("Controllers / Messages / API", function()
             message: "Mensaje de Prueba"
         }
         
-        const response = await appAgent.post("/api/messages").send(anyMessageInfo);
+        await appAgent.post("/api/messages").send(anyMessageInfo);
 
         let results = await testSetupContents().getAnyMessages({subjectid: 1});
         assert.isArray(results);
