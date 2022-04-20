@@ -7,6 +7,7 @@ let testSetupContents = function()
     return {
         deleteRepositoryContent,
         givenAnyUser,
+        givenAnyMessage,
         getAnyUser
     };
 };
@@ -59,6 +60,31 @@ function givenAnyUser(contentInfo)
 
         let sql = "INSERT INTO "+repoTable+" ("+repoColumns+") VALUES (?,?,?,?,?,?,?,?,?,?)";
         repoConnection.query(sql, [contentInfo.name, contentInfo.surname, contentInfo.display_name, contentInfo.email, contentInfo.phone, contentInfo.passwd, contentInfo.rol, contentInfo.points, contentInfo.organization, contentInfo.time_stamp], function(error)
+        {
+            if (error)
+            {
+                reject(error);
+            }
+            else
+            {
+                resolve();
+            }
+        });
+
+
+    });
+}
+
+function givenAnyMessage(contentInfo)
+{
+    return new Promise(function(resolve, reject)
+    {
+        let repoConnection = repoAbstractFactory.getConnectionProvider(IS_TEST_ENV);
+        let repoTable = "messages";
+        let repoColumns = "SUBJECTID, USERID, MESSAGE, RESPONSES";
+
+        let sql = "INSERT INTO "+repoTable+" ("+repoColumns+") VALUES (?,?,?,?)";
+        repoConnection.query(sql, [contentInfo.subjectid, contentInfo.userid, contentInfo.message, contentInfo.responses], function(error)
         {
             if (error)
             {
