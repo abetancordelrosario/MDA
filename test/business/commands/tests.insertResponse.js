@@ -28,7 +28,7 @@ describe ("Business / Command / Messages", function()
 
         let results = await testSetupContents().getAnyMessages({subjectid: 1});
         let responses = JSON.parse(results[0].RESPONSES);
-        assert.equal(responses[0].response, 1);
+        assert.equal(responses[0].id, 1);
         assert.equal(responses[0].text, "Respuesta de Prueba");
     })
 });

@@ -1,32 +1,22 @@
-let insertResponse = function(connectionProvider)
+let deleteResponse = function(connectionProvider)
 {
     return {
-        execute: function(responseInfo)
+        execute: function(responseToDelete)
         {
             return new Promise(function(resolve, reject)
             {
-                getResponses(connectionProvider, responseInfo)
+                getResponses(connectionProvider, responseToDelete)
                 .then(function(results)
                 {
                     let responses = results;
-                    let messageResponse = {
-                        id: 1,
-                        text: responseInfo.response
+                    if (responses.length < 0) {
+                        resolve();
                     }
 
-                    if (responses.length > 0) {
-                        let lastResponse = Math.max.apply(Math, responses.map(function(o) { return o.response; }));
-                        messageResponse = {
-                            id: lastResponse + 1,
-                            text: responseInfo.response
-                        }
-
-                    }
-                    responses.push(messageResponse);
-
-                    insertResponseQuery(connectionProvider, responseInfo.messageid, responses)
-                    .then(function(results) {
-
+                    var responsesParsed = responses.filter(function(el) { return el.id != responseToDelete.id; });
+                    updateResponseQuery(connectionProvider, responsesParsed, responseToDelete.messageid)
+                    .then(function()
+                    {
                         resolve();
                     })
                     .catch(function(error)
@@ -44,13 +34,13 @@ let insertResponse = function(connectionProvider)
 }
 
 
-function insertResponseQuery(connectionProvider, messageid, responses)
+function updateResponseQuery(connectionProvider, responseToDelete, messageid)
 {
     return new Promise(function(resolve, reject)
-    {
+    {        
         let repoTable = "messages";
         let sqlQuery = "UPDATE "+repoTable+" SET RESPONSES=? WHERE ID=?";
-        connectionProvider.query(sqlQuery, [JSON.stringify(responses), messageid],
+        connectionProvider.query(sqlQuery, [JSON.stringify(responseToDelete), messageid],
             
         function(error)
         {
@@ -66,13 +56,13 @@ function insertResponseQuery(connectionProvider, messageid, responses)
     })
 }
 
-function getResponses(connectionProvider, responseInfo)
+function getResponses(connectionProvider, responseToDelete)
 {
     return new Promise(function(resolve, reject)
     {
         let repoTable = "messages";
         let sqlQuery = "SELECT RESPONSES FROM "+repoTable+" WHERE ID=?";
-        connectionProvider.query(sqlQuery, [responseInfo.messageid],
+        connectionProvider.query(sqlQuery, [responseToDelete.messageid],
             
         function(error, results)
         {
@@ -82,12 +72,11 @@ function getResponses(connectionProvider, responseInfo)
             }
             else
             {
-                let responses = (results[0].length && results[0].length > 0) ? JSON.parse(results[0].RESPONSES) : [];
+                let responses = (results.length && results.length > 0) ? JSON.parse(results[0].RESPONSES) : [];
                 resolve(responses);
             }
         })
     })
 }
 
-
-module.exports = insertResponse;
+module.exports = deleteResponse;
