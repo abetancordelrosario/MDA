@@ -17,7 +17,7 @@ describe("Business / Queries / User", function()
         })
     });
 
-    it("Should return all the messages for a specified subject", async() =>
+    it("Should return a message for a specified subject", async() =>
     {
         await testSetupContents().givenAnyMessage({subjectid: 1, userid: 1, message: "Mensaje de Prueba"});
         let anyUserSubjectId = 1
