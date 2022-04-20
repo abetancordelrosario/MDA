@@ -26,7 +26,7 @@ describe ("Business / Command / Messages", function()
         
         await commandFactory.insertMessage().execute(anyMessageInfo);
 
-        let results = await testSetupContents().getAnyMessage({subjectid: 1});
+        let results = await testSetupContents().getAnyMessages({subjectid: 1});
         assert.isArray(results);
         assert.equal(results[0].MESSAGE, "Mensaje de Prueba");
     })

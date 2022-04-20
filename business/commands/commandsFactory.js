@@ -2,6 +2,7 @@ let repoAbstractFactory = require("../../infrastructure/repositories/repoAbstrac
     insertUser = require("./insertUser.js");
     deleteUser = require("./deleteUser.js");
     updateUser = require("./updateUser.js");
+    insertMessage = require("./insertMessage.js");
 
 let commandsFactory =
 {
@@ -20,6 +21,12 @@ let commandsFactory =
     updateUser: function()
     {
         let action = updateUser(getConnectionProvider());
+        return action;
+    },
+
+    insertMessage: function()
+    {
+        let action = insertMessage(getConnectionProvider());
         return action;
     }
 
