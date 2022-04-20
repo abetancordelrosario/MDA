@@ -18,7 +18,10 @@ function deleteRepositoryContent()
     {
         let repoConnection = repoAbstractFactory.getConnectionProvider(IS_TEST_ENV);
         
-        truncateMySQLTable("users", repoConnection)
+        Promise.all([
+            truncateMySQLTable("users", repoConnection),
+            truncateMySQLTable("messages", repoConnection)
+        ])
         .then(function()
         {
             resolve();
