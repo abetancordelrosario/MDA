@@ -13,6 +13,16 @@ router.route("/")
     }).catch(function(error) {
         response.status(400).send("Error:" +error.message)
     })
+})
+.post(function(request, response){
+    
+    let messageInfo = request.body;
+    commandsFactory.insertMessage().execute(messageInfo)
+    .then(function(result) {
+        response.status(200).send(result);
+    }).catch(function(error) {
+        response.status(400).send("Error:" +error.message)
+    })
 });
 
 module.exports = router
