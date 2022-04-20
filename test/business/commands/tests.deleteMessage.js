@@ -23,6 +23,6 @@ describe ("Business / Command / Messages", function()
         await commandFactory.deleteMessage().execute(anyMessageId);
 
         results = await testSetupContents().getAnyMessages({subjectid: 1});
-        assert.isNull(results);
+        assert.isEmpty(results);
     });
 });
