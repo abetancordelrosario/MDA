@@ -58,4 +58,15 @@ describe ("Controllers / Messages / API", function()
         assert.isArray(results);
         assert.equal(results[0].MESSAGE, "Mensaje de Prueba");
     })
+
+    it("Should delete a message", async() =>
+    {
+        const anyMessageId = "1";
+        await testSetupContents().givenAnyMessage({subjectid: 1, userid: 1, message: "Mensaje de Prueba"});
+
+        await appAgent.delete("/api/messages").send(anyMessageId);
+
+        results = await testSetupContents().getAnyMessages({subjectid: 1});
+        assert.isEmpty(results);
+    });
 });
