@@ -8,7 +8,8 @@ let testSetupContents = function()
         deleteRepositoryContent,
         givenAnyUser,
         givenAnyMessage,
-        getAnyUser
+        getAnyUser,
+        getAnyMessages
     };
 };
 
@@ -123,5 +124,27 @@ function getAnyUser(contentInfo)
         });
     });
 }
+
+function getAnyMessages(contentInfo)
+{
+    return new Promise(function(resolve, reject){
+        let repoConnection = repoAbstractFactory.getConnectionProvider(IS_TEST_ENV);
+        let repoTable = "messages"
+        
+        let sql = "SELECT MESSAGE, RESPONSES FROM "+repoTable+" WHERE SUBJECTID=?";
+        repoConnection.query(sql, [contentInfo.subjectid], function(error, result)
+        {
+            if (error)
+            {
+                reject(error);
+            }
+            else
+            {
+                resolve(result);
+            }
+        });
+    });
+}
+
 
 module.exports = testSetupContents;
