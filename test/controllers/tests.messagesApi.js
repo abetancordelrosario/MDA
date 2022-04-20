@@ -61,7 +61,9 @@ describe ("Controllers / Messages / API", function()
 
     it("Should delete a message", async() =>
     {
-        const anyMessageId = "1";
+        const anyMessageId = {
+            id: 1
+        };
         await testSetupContents().givenAnyMessage({subjectid: 1, userid: 1, message: "Mensaje de Prueba"});
 
         await appAgent.delete("/api/messages").send(anyMessageId);
