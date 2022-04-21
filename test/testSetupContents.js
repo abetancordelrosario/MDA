@@ -10,7 +10,8 @@ let testSetupContents = function()
         givenAnyMessage,
         getAnyUser,
         getAnyMessages,
-        givenAnySubject
+        givenAnySubject,
+        getAnySubjects
     };
 };
 
@@ -157,7 +158,7 @@ function getAnyMessages(contentInfo)
     return new Promise(function(resolve, reject){
         let repoConnection = repoAbstractFactory.getConnectionProvider(IS_TEST_ENV);
         let repoTable = "messages"
-        
+
         let sql = "SELECT MESSAGE, RESPONSES FROM "+repoTable+" WHERE SUBJECTID=?";
         repoConnection.query(sql, [contentInfo.subjectid], function(error, result)
         {
@@ -170,6 +171,25 @@ function getAnyMessages(contentInfo)
                 resolve(result);
             }
         });
+    });
+}
+
+function getAnySubjects()
+{
+    return new Promise(function(resolve, reject){
+        let repoConnection = repoAbstractFactory.getConnectionProvider(IS_TEST_ENV);
+        let repoTable = "subjects"
+        
+        let sql = "SELECT * FROM "+repoTable+"";
+        repoConnection.query(sql,(error, result) => {
+                if (error) {
+                    reject(error);
+                }
+
+                else {
+                    resolve(result);
+                }
+            });
     });
 }
 
