@@ -20,10 +20,6 @@ describe("Business / Queries / Subjects", function()
     {
         
         await testSetupContents().givenAnySubject({name: "nombre1", university: "universidad1", faculty: "Escuela1"});
-        // let anySubjectsInfo = {
-        //     display_name: "display1",
-        //     passwd: password
-        // }
         
         const results = await queriesFactory.getSubjects().execute();
         
