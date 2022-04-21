@@ -9,7 +9,8 @@ let testSetupContents = function()
         givenAnyUser,
         givenAnyMessage,
         getAnyUser,
-        getAnyMessages
+        getAnyMessages,
+        givenAnySubject
     };
 };
 
@@ -21,7 +22,8 @@ function deleteRepositoryContent()
         
         Promise.all([
             truncateMySQLTable("users", repoConnection),
-            truncateMySQLTable("messages", repoConnection)
+            truncateMySQLTable("messages", repoConnection),
+            truncateMySQLTable("subjects", repoConnection)
         ])
         .then(function()
         {
@@ -104,6 +106,31 @@ function givenAnyMessage(contentInfo)
     });
 }
 
+function givenAnySubject(contentInfo)
+{
+    return new Promise(function(resolve, reject)
+    {
+        let repoConnection = repoAbstractFactory.getConnectionProvider(IS_TEST_ENV);
+        let repoTable = "subjects";
+        let repoColumns = "NAME, UNIVERSITY, FACULTY";
+
+        let sql = "INSERT INTO "+repoTable+" ("+repoColumns+") VALUES (?,?,?)";
+        repoConnection.query(sql, [contentInfo.name, contentInfo.university, contentInfo.faculty], function(error)
+        {
+            if (error)
+            {
+                reject(error);
+            }
+            else
+            {
+                resolve();
+            }
+        });
+
+
+    });
+}
+
 function getAnyUser(contentInfo)
 {
     return new Promise(function(resolve, reject){
@@ -145,27 +172,5 @@ function getAnyMessages(contentInfo)
         });
     });
 }
-
-function getAnyResponse(contentInfo)
-{
-    return new Promise(function(resolve, reject){
-        let repoConnection = repoAbstractFactory.getConnectionProvider(IS_TEST_ENV);
-        let repoTable = "messages"
-        
-        let sql = "SELECT RESPONSES FROM "+repoTable+" WHERE ID=?";
-        repoConnection.query(sql, [contentInfo.messageid], function(error, result)
-        {
-            if (error)
-            {
-                reject(error);
-            }
-            else
-            {
-                resolve(JSON.parse(result));
-            }
-        });
-    });
-}
-
 
 module.exports = testSetupContents;
