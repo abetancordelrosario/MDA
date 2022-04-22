@@ -1,6 +1,5 @@
 let assert = require("chai").assert,
     testSetupContents = require("../testSetupContents.js"),
-    md5 = require("md5"),
     queriesFactory = require("../../business/commands/commandsFactory.js"),
     app = require("../../app.js"),
     supertest = require("supertest"),
@@ -19,18 +18,17 @@ describe ("Controllers / Subjects / API", function()
         })
     });
 
-    // it("Should return Subject info", async() =>
-    // {
+    it("Should return Subject info", async() =>
+    {
         
-    //     await testSetupContents().givenAnySubject({name: "nombre1", university: "universidad1", faculty: "Escuela1"});
+        await testSetupContents().givenAnySubject({name: "nombre1", university: "universidad1", faculty: "Escuela1"});
 
-    //     const response = await appAgent.get("/api/subjects");
-    //     let results = JSON.parse(response.text);
-    //     console.log(results);
-
-    //     assert.equal(results[0].NAME, "nombre1");
-    //     assert.equal(results[0].UNIVERSITY, "universidad1");
-    // });
+        const response = await appAgent.get("/api/subjects");
+        let results = JSON.parse(response.text);
+        
+        assert.equal(results[0].NAME, "nombre1");
+        assert.equal(results[0].UNIVERSITY, "universidad1");
+    });
 
     it("Should delete a Subject", async() =>
     {
@@ -47,6 +45,7 @@ describe ("Controllers / Subjects / API", function()
         await appAgent.delete("/api/subjects").send(anySubjectId);
 
         results = await testSetupContents().getAnySubjects();
+        //console.log(results)
         assert.equal(results.length, 1);
     });
 });
