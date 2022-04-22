@@ -35,4 +35,15 @@ router.route("/")
     })
 })
 
+.put(function(request, response){
+    
+    updateSubjectData = request.body;
+    commandsFactory.updateSubject().execute(updateSubjectData)
+    .then(function(result) {
+        response.status(200).send("Is OK")
+    }).catch(function(error) {
+        response.status(400).send("Error:" +error.message)
+    })
+})
+
 module.exports = router
