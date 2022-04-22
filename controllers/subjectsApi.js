@@ -24,4 +24,15 @@ router.route("/")
     })
 })
 
+.post(function(request, response){
+    
+    anySubjectId = request.body;
+    commandsFactory.insertSubject().execute(anySubjectId)
+    .then(function(result) {
+        response.status(200).send("Is OK")
+    }).catch(function(error) {
+        response.status(400).send("Error:" +error.message)
+    })
+})
+
 module.exports = router
