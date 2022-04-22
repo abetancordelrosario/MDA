@@ -19,33 +19,34 @@ describe ("Controllers / Subjects / API", function()
         })
     });
 
-    it("Should return Subject info", async() =>
-    {
-        
-        await testSetupContents().givenAnySubject({name: "nombre1", university: "universidad1", faculty: "Escuela1"});
-        
-        const results = await appAgent.get("/api/subjects");
-        let results1 = JSON.parse(results.text);
-
-        assert.equal(results1[0].NAME, "nombre1");
-        assert.equal(results1[0].UNIVERSITY, "universidad1");
-    });
-
-    // it("Should delete a Subject", async() =>
+    // it("Should return Subject info", async() =>
     // {
+        
     //     await testSetupContents().givenAnySubject({name: "nombre1", university: "universidad1", faculty: "Escuela1"});
-    //     await testSetupContents().givenAnySubject({name: "nombre2", university: "universidad2", faculty: "Escuela2"});
-    //     let anySubjectId = {
-    //         ID: 1
-    //     };
-    //     let results = await testSetupContents().getAnySubjects();
+
+    //     const response = await appAgent.get("/api/subjects");
+    //     let results = JSON.parse(response.text);
+    //     console.log(results);
+
     //     assert.equal(results[0].NAME, "nombre1");
     //     assert.equal(results[0].UNIVERSITY, "universidad1");
-    //     assert.equal(results.length, 2);
-
-    //     await commandFactory.delete("/api/subjects").send(anySubjectId);
-
-    //     results = await testSetupContents().getAnySubjects();
-    //     assert.equal(results.length, 1);
     // });
+
+    it("Should delete a Subject", async() =>
+    {
+        await testSetupContents().givenAnySubject({name: "nombre1", university: "universidad1", faculty: "Escuela1"});
+        await testSetupContents().givenAnySubject({name: "nombre2", university: "universidad2", faculty: "Escuela2"});
+        let anySubjectId = {
+            ID: 1
+        };
+        let results = await testSetupContents().getAnySubjects();
+        assert.equal(results[0].NAME, "nombre1");
+        assert.equal(results[0].UNIVERSITY, "universidad1");
+        assert.equal(results.length, 2);
+
+        await appAgent.delete("/api/subjects").send(anySubjectId);
+
+        results = await testSetupContents().getAnySubjects();
+        assert.equal(results.length, 1);
+    });
 });

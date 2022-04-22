@@ -19,7 +19,7 @@ let getSubjects = function(connectionProvider)
     }
 }
 
-function getSubjectsQuery(connectionProvider )
+function getSubjectsQuery(connectionProvider)
 {
     return new Promise(function(resolve, reject)
     {
