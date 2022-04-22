@@ -47,4 +47,39 @@ describe ("Controllers / Subjects / API", function()
         results = await testSetupContents().getAnySubjects();
         assert.equal(results.length, 1);
     });
+
+    it("Should insert a Subject", async() =>
+    {
+        const subjectInfo1 = {
+            name: "asignatura1" ,
+            university: "universidad1",
+            faculty: "facultad1"
+        }
+
+        const subjectInfo2 = {
+            name: "asignatura2" ,
+            university: "universidad2",
+            faculty: "facultad2"
+        }
+        
+        await appAgent.post("/api/subjects").send(subjectInfo1);
+        let results = await testSetupContents().getAnySubjects();
+        assert.equal(results[0].NAME, "asignatura1");
+        assert.equal(results[0].UNIVERSITY, "universidad1");
+        assert.equal(results[0].FACULTY, "facultad1");
+        assert.equal(results.length, 1);
+
+        await appAgent.post("/api/subjects").send(subjectInfo2);
+        results = await testSetupContents().getAnySubjects();
+
+        assert.equal(results[0].NAME, "asignatura1");
+        assert.equal(results[0].UNIVERSITY, "universidad1");
+        assert.equal(results[0].FACULTY, "facultad1");
+        assert.equal(results.length, 2);
+
+        assert.equal(results[1].NAME, "asignatura2");
+        assert.equal(results[1].UNIVERSITY, "universidad2");
+        assert.equal(results[1].FACULTY, "facultad2");
+        assert.equal(results.length, 2);
+    });
 });
