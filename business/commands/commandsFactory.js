@@ -7,7 +7,8 @@ let repoAbstractFactory = require("../../infrastructure/repositories/repoAbstrac
     updateUser = require("./updateUser.js");
     insertMessage = require("./insertMessage.js");
     insertResponse = require("./insertResponse.js");
-    insertSubject = require("./insertSubject.js")
+    insertSubject = require("./insertSubject.js");
+    updateSubject = require("./updateSubject.js")
 
 let commandsFactory =
 {
@@ -62,6 +63,12 @@ let commandsFactory =
     insertSubject: function()
     {
         let action = insertSubject(getConnectionProvider());
+        return action;
+    },
+
+    updateSubject: function()
+    {
+        let action = updateSubject(getConnectionProvider());
         return action;
     }
 
