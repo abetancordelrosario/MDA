@@ -14,11 +14,11 @@ router.route("/")
 })
 
 .delete(function(request, response){
-    anySubjectId = request.body.id;
-    console.log(anySubjectId);
+    
+    anySubjectId = request.body;
     commandsFactory.deleteSubject().execute(anySubjectId)
     .then(function(result) {
-        response.status(200).send("Is OK").send(result)
+        response.status(200).send("Is OK")
     }).catch(function(error) {
         response.status(400).send("Error:" +error.message)
     })

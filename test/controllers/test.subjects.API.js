@@ -25,7 +25,7 @@ describe ("Controllers / Subjects / API", function()
 
         const response = await appAgent.get("/api/subjects");
         let results = JSON.parse(response.text);
-        
+
         assert.equal(results[0].NAME, "nombre1");
         assert.equal(results[0].UNIVERSITY, "universidad1");
     });
@@ -45,7 +45,6 @@ describe ("Controllers / Subjects / API", function()
         await appAgent.delete("/api/subjects").send(anySubjectId);
 
         results = await testSetupContents().getAnySubjects();
-        //console.log(results)
         assert.equal(results.length, 1);
     });
 });
