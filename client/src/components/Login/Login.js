@@ -1,29 +1,42 @@
-import {React, useState, useEffect} from 'react';
+import React from 'react';
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
 import './Login.css';
+import {getUser} from '../../services/userService'
+let md5 = require("md5")
 
 
-const Login = () => {
+class Login extends React.Component {
      
+    handleSubmit = (event) => {
+        event.preventDefault()
+        
+        let userData = {
+            display_name: event.target.elements.usuario.value,
+            passwd: md5(event.target.elements.contra.value)
+        }
+        getUser(userData)
+    }
 
 
-    return (
+    render() {
+        return(
         <Popup trigger={<a href='#!' class="container-button">Iniciar Sesión</a>} position="bottom center">
             <div className="login-form">
-            <form>
+            <form onSubmit={this.handleSubmit}>
                 <div className="form-outline mb-4">
                 <label className="form-label" htmlFor="form2Example1">Usuario</label>
                     <input 
                         type="text" 
                         id="form2Example1" 
                         className="form-control" 
+                        name="usuario"
                         />                 
                 </div>
 
                 <div className="form-outline mb-4">
                     <label className="form-label" htmlFor="form2Example2">Contraseña</label>
-                    <input type="password" id="form2Example2" class="form-control" />
+                    <input type="password" id="form2Example2" class="form-control" name="contra" />
                 </div>
 
                 <div className="row mb-4 passwd">
@@ -55,7 +68,7 @@ const Login = () => {
             </form>
             </div>
         </Popup>
-    );
+    )}
 }
 
 export default Login;

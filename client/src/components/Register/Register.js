@@ -1,21 +1,26 @@
 import React from 'react';
 import './Register.css';
-import {getUser, createUser} from '../../services/userService'
+import {createUser} from '../../services/userService'
 let md5 = require("md5")
 
 class Register extends React.Component {
 
     handleSubmit = (event) => {
         event.preventDefault()
-        const user = event.target.elements.usuario.value
-        // console.log(event.target.elements.nombre.value)
-        // console.log(event.target.elements.apellidos.value)
-        // console.log(event.target.elements.correo.value)
-        // console.log(event.target.elements.telefono.value)
-        // console.log(event.target.elements.universidad.value)
-        const password = md5(event.target.elements.contra.value);
-        // console.log(event.target.elements.repcontra.value)
-        createUser(user)
+        
+        let userInfo = {
+            name: event.target.elements.nombre.value,
+            surname: event.target.elements.apellidos.value,
+            display_name: event.target.elements.usuario.value,
+            email: event.target.elements.correo.value,
+            phone: event.target.elements.telefono.value,
+            passwd: md5(event.target.elements.contra.value),
+            rol: 1, 
+            points: 2, 
+            organization: event.target.elements.universidad.value,
+            time_stamp: "17/03/2022 12:12:25"
+        }
+        createUser(userInfo)
     }
 
     render() {
