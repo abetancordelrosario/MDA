@@ -5,13 +5,14 @@ import Profile from './components/Profile/Profile';
 import Register from './components/Register/Register';
 import ListaConversaciones from './components/ListaConversaciones/ListaConversaciones';
 import ListaAsignaturas from './components/ListaAsignaturas/ListaAsignaturas';
+import ListaRespuestas from './components/ListaRespuestas/ListaRespuestas';
 import './App.css';
 
 function App() {
   return (
     <div className="container-fluid">
       <Header />
-      <ListaAsignaturas />
+      <ListaRespuestas />
       <Footer />
     </div>
   );

@@ -5,7 +5,7 @@ function Footer () {
     return (
         <footer>
             <div className='container-texto'>
-                <h2>¡Empezemos!</h2>
+                <h2>¡Empecemos!</h2>
             </div>
             <div className="container-button">
                 <a href="#!">Regístrate</a>

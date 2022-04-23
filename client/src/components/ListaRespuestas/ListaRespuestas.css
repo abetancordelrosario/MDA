@@ -11,35 +11,35 @@
     color: #4f4f4f;
 }
 
-.asignaturas {
+.respuestas {
     padding: 25px;
     font-size: 22px;
 }
 
-.lista-asignaturas {
+.lista-respuestas {
     border-top: 1px solid grey;
     border-bottom: 1px solid grey;
 }
 
-.asignatura {
+.respuesta {
     display: flex;
     padding: 15px;
     transition: font-size 0.5s, color 0.5s;
     border-bottom: 1px solid #ccc;
 }
 
-.asignatura:hover {
+.respuesta:hover {
     font-size: 24px;
     color: blue;
 }
 
-.asignatura a {
+.respuesta a {
     text-decoration: none;
     color: inherit;
     margin-right: 80px;
 }
 
-.asignatura a:hover {
+.respuesta a:hover {
     color: inherit;
 }
 
