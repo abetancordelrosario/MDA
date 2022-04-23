@@ -1,6 +1,6 @@
 import React from 'react';
 import './Register.css';
-import {getAllUsers, createUser} from '../../services/userService'
+import {getUser, createUser} from '../../services/userService'
 let md5 = require("md5")
 
 class Register extends React.Component {
@@ -8,11 +8,11 @@ class Register extends React.Component {
     handleSubmit = (event) => {
         event.preventDefault()
         const user = event.target.elements.usuario.value
-        console.log(event.target.elements.nombre.value)
-        console.log(event.target.elements.apellidos.value)
-        console.log(event.target.elements.correo.value)
-        console.log(event.target.elements.telefono.value)
-        console.log(event.target.elements.universidad.value)
+        // console.log(event.target.elements.nombre.value)
+        // console.log(event.target.elements.apellidos.value)
+        // console.log(event.target.elements.correo.value)
+        // console.log(event.target.elements.telefono.value)
+        // console.log(event.target.elements.universidad.value)
         const password = md5(event.target.elements.contra.value);
         // console.log(event.target.elements.repcontra.value)
         createUser(user)
