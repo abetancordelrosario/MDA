@@ -1,7 +1,10 @@
+import Header from '../Header/Header';
+import Footer from '../Footer/Footer';
 import React from 'react';
 import './Register.css';
 import {createUser} from '../../services/userService'
 let md5 = require("md5")
+
 
 class Register extends React.Component {
 
@@ -25,6 +28,8 @@ class Register extends React.Component {
 
     render() {
         return (
+            <div>
+            <Header />
             <div className="register-page">
                 <form onSubmit={this.handleSubmit}>
                     <div className="register-form">
@@ -68,6 +73,8 @@ class Register extends React.Component {
                         <button type="submit">Regístrate</button>
                     </div>
                 </form>
+            </div>
+            <Footer />
             </div>
         )
     }

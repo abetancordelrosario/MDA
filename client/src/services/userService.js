@@ -8,16 +8,9 @@ export async function getUser(data) {
         body: JSON.stringify(data)
     })
     let results = response.json();
-    results.then(value => {
-        console.log(value);
-    }).catch(err => {
-        console.log(err);
-    });
-    // console.log(results)
-    // console.log(results[0].DISPLAY_NAME);
-    // console.log(results[0].PASSWD);
-    return response.json();
+    return results
 
+    
     
 }
 

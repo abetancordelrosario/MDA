@@ -1,5 +1,7 @@
 import React from 'react';
 import './Footer.css';
+import {Link} from 'react-router-dom';
+
 
 function Footer () {
     return (
@@ -8,7 +10,7 @@ function Footer () {
                 <h2>¡Empezemos!</h2>
             </div>
             <div className="container-button">
-                <a href="#!">Regístrate</a>
+                <Link to="/register">Regístrate</Link>
             </div>
             <div className="container-Copyright">
                 <span>Copyright © 2022  Estufor-U. All rights reserved</span>

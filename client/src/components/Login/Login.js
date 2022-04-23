@@ -3,27 +3,40 @@ import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
 import './Login.css';
 import {getUser} from '../../services/userService'
+import {Link, useNavigate } from 'react-router-dom';
 let md5 = require("md5")
 
 
-class Login extends React.Component {
-     
-    handleSubmit = (event) => {
+const Login = () =>  {
+
+    const navigate = useNavigate();
+  
+    const handleSubmit = (event) => {
         event.preventDefault()
         
         let userData = {
             display_name: event.target.elements.usuario.value,
             passwd: md5(event.target.elements.contra.value)
         }
-        getUser(userData)
+        let results = getUser(userData)
+        
+        results.then(value => {
+            console.log(value[0].NAME);
+            console.log(value[0].SURNAME)
+            console.log(value[0].EMAIL)
+            console.log(value[0].PHONE)
+            navigate('/profile')
+        }).catch(err => {
+            alert("No existe la cuenta")
+        });
+
     }
 
 
-    render() {
         return(
         <Popup trigger={<a href='#!' class="container-button">Iniciar Sesión</a>} position="bottom center">
             <div className="login-form">
-            <form onSubmit={this.handleSubmit}>
+            <form onSubmit={handleSubmit}>
                 <div className="form-outline mb-4">
                 <label className="form-label" htmlFor="form2Example1">Usuario</label>
                     <input 
@@ -63,12 +76,12 @@ class Login extends React.Component {
                 </div>
 
                 <div className="text-center">
-                    <p>¿Aún no estás registrado? <a href="#!">Regístrate</a></p>
+                    <p>¿Aún no estás registrado? <Link to="/register">Regístrate</Link></p>
                 </div>
             </form>
             </div>
         </Popup>
-    )}
+    )
 }
 
 export default Login;

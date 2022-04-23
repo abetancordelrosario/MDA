@@ -1,6 +1,8 @@
 import React from 'react';
 import './Header.css';
 import Login from "../Login/Login";
+import {Link} from 'react-router-dom';
+
 
 function Header () {
     return (
@@ -8,7 +10,7 @@ function Header () {
             <div className="row">
                 <div className="col-lg-6">
                     <div id="brand-logo">
-                        <a href="/src/profile-page.js"><h1>EstuFor-U</h1></a>
+                        <Link to="/"><h1>EstuFor-U</h1></Link>
                     </div>
                 </div>
                 <div className='col-lg-6 login'>
