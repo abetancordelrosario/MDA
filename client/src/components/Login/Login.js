@@ -3,14 +3,15 @@ import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
 import './Login.css';
 import {getUser} from '../../services/userService'
-import {Link, useNavigate } from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
 let md5 = require("md5")
 
 
 const Login = () =>  {
 
     const navigate = useNavigate();
-  
+
+
     const handleSubmit = (event) => {
         event.preventDefault()
         
@@ -21,11 +22,11 @@ const Login = () =>  {
         let results = getUser(userData)
         
         results.then(value => {
-            console.log(value[0].NAME);
-            console.log(value[0].SURNAME)
-            console.log(value[0].EMAIL)
-            console.log(value[0].PHONE)
-            navigate('/profile')
+            // console.log(value[0].NAME);
+            // console.log(value[0].SURNAME)   
+            // console.log(value[0].EMAIL)
+            // console.log(value[0].PHONE)
+            navigate(`/profile/${value[0].NAME}&${value[0].SURNAME}&${value[0].EMAIL}&${value[0].PHONE}&${value[0].SURNAME}`)
         }).catch(err => {
             alert("No existe la cuenta")
         });

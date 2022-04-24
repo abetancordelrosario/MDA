@@ -12,7 +12,7 @@ function App() {
             <Route path="/" element={<App />} />
             <Route index element={<Home />} />
             <Route path='/register' element={<Register />} />
-            <Route path='/profile' element={<Profile />} />
+            <Route path='/profile/:name&:passwd&:email&:phone&:surname' element={<Profile />} />
         </Routes>
       </BrowserRouter>
   );

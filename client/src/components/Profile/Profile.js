@@ -2,8 +2,13 @@ import React from 'react';
 import './Profile.css'
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
+import {useLocation, useParams} from 'react-router-dom';
 
 function Profile () {
+
+    const params = useParams()
+    console.log(params)
+
     return (
         <div>
            <Header /> 
@@ -14,21 +19,21 @@ function Profile () {
                         <div class="row">
                             <div class="col">
                                 <label>Nombre</label>
-                                <input type="text" class="form-control"/>
+                                <input type="text" placeholder={params.name} class="form-control"/>
                             </div>
                             <div class="col">
                                 <label>Apellidos</label>
-                                <input type="text" class="form-control"/>
+                                <input type="text" placeholder={params.surname} class="form-control"/>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col">
                                 <label>Correo Electrónico</label>
-                                <input type="email" class="form-control"/>
+                                <input type="email" placeholder={params.email} class="form-control"/>
                             </div>
                             <div class="col">
                                 <label>Teléfono</label>
-                                <input type="text" class="form-control"/>
+                                <input type="text" placeholder={params.phone} class="form-control"/>
                             </div>
                         </div>
                     </div>
