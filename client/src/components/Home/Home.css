@@ -1,0 +1,11 @@
+.home-page {
+    min-height: 75vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url("fondo.jpg");
+}
+
+input {
+    border-radius: 10px;
+}

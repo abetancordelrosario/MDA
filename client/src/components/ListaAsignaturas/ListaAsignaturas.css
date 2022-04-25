@@ -1,0 +1,49 @@
+.title {
+    padding: 25px 0 25px 0;
+    background-color: #f2f3f5;
+}
+
+.title h2 {
+    font-size: 35px;
+    font-weight: 700;
+    margin-top: 0;
+    padding-left: 25px;
+    color: #4f4f4f;
+}
+
+.asignaturas {
+    padding: 25px;
+    font-size: 22px;
+}
+
+.lista-asignaturas {
+    border-top: 1px solid grey;
+    border-bottom: 1px solid grey;
+}
+
+.asignatura {
+    display: flex;
+    padding: 15px;
+    transition: font-size 0.5s, color 0.5s;
+    border-bottom: 1px solid #ccc;
+}
+
+.asignatura:hover {
+    font-size: 24px;
+    color: blue;
+}
+
+.asignatura a {
+    text-decoration: none;
+    color: inherit;
+    margin-right: 80px;
+}
+
+.asignatura a:hover {
+    color: inherit;
+}
+
+#subtitle {
+    font-weight: 500;
+    font-size: 26px;
+}

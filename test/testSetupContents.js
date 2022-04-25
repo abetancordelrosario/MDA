@@ -7,7 +7,11 @@ let testSetupContents = function()
     return {
         deleteRepositoryContent,
         givenAnyUser,
-        getAnyUser
+        givenAnyMessage,
+        getAnyUser,
+        getAnyMessages,
+        givenAnySubject,
+        getAnySubjects
     };
 };
 
@@ -17,7 +21,11 @@ function deleteRepositoryContent()
     {
         let repoConnection = repoAbstractFactory.getConnectionProvider(IS_TEST_ENV);
         
-        truncateMySQLTable("users", repoConnection)
+        Promise.all([
+            truncateMySQLTable("users", repoConnection),
+            truncateMySQLTable("messages", repoConnection),
+            truncateMySQLTable("subjects", repoConnection)
+        ])
         .then(function()
         {
             resolve();
@@ -74,6 +82,56 @@ function givenAnyUser(contentInfo)
     });
 }
 
+function givenAnyMessage(contentInfo)
+{
+    return new Promise(function(resolve, reject)
+    {
+        let repoConnection = repoAbstractFactory.getConnectionProvider(IS_TEST_ENV);
+        let repoTable = "messages";
+        let repoColumns = "SUBJECTID, USERID, MESSAGE, RESPONSES";
+
+        let sql = "INSERT INTO "+repoTable+" ("+repoColumns+") VALUES (?,?,?,?)";
+        repoConnection.query(sql, [contentInfo.subjectid, contentInfo.userid, contentInfo.message, contentInfo.responses], function(error)
+        {
+            if (error)
+            {
+                reject(error);
+            }
+            else
+            {
+                resolve();
+            }
+        });
+
+
+    });
+}
+
+function givenAnySubject(contentInfo)
+{
+    return new Promise(function(resolve, reject)
+    {
+        let repoConnection = repoAbstractFactory.getConnectionProvider(IS_TEST_ENV);
+        let repoTable = "subjects";
+        let repoColumns = "NAME, UNIVERSITY, FACULTY";
+
+        let sql = "INSERT INTO "+repoTable+" ("+repoColumns+") VALUES (?,?,?)";
+        repoConnection.query(sql, [contentInfo.name, contentInfo.university, contentInfo.faculty], function(error)
+        {
+            if (error)
+            {
+                reject(error);
+            }
+            else
+            {
+                resolve();
+            }
+        });
+
+
+    });
+}
+
 function getAnyUser(contentInfo)
 {
     return new Promise(function(resolve, reject){
@@ -92,6 +150,46 @@ function getAnyUser(contentInfo)
                 resolve(result);
             }
         });
+    });
+}
+
+function getAnyMessages(contentInfo)
+{
+    return new Promise(function(resolve, reject){
+        let repoConnection = repoAbstractFactory.getConnectionProvider(IS_TEST_ENV);
+        let repoTable = "messages"
+
+        let sql = "SELECT MESSAGE, RESPONSES FROM "+repoTable+" WHERE SUBJECTID=?";
+        repoConnection.query(sql, [contentInfo.subjectid], function(error, result)
+        {
+            if (error)
+            {
+                reject(error);
+            }
+            else
+            {
+                resolve(result);
+            }
+        });
+    });
+}
+
+function getAnySubjects()
+{
+    return new Promise(function(resolve, reject){
+        let repoConnection = repoAbstractFactory.getConnectionProvider(IS_TEST_ENV);
+        let repoTable = "subjects"
+        
+        let sql = "SELECT * FROM "+repoTable+"";
+        repoConnection.query(sql,(error, result) => {
+                if (error) {
+                    reject(error);
+                }
+
+                else {
+                    resolve(result);
+                }
+            });
     });
 }
 

@@ -1,11 +1,11 @@
-let getUser = function(connectionProvider)
+let getMessages = function(connectionProvider)
 {
     return {
-        execute: function(userInfo)
+        execute: function(subjectId)
         {
             return new Promise(function(resolve, reject)
             {
-                getUserQuery(connectionProvider, userInfo)
+                getMessagesQuery(connectionProvider, subjectId)
                 .then(function(results)
                 {
                     resolve(results);
@@ -19,13 +19,13 @@ let getUser = function(connectionProvider)
     }
 }
 
-function getUserQuery(connectionProvider, userInfo)
+function getMessagesQuery(connectionProvider, subjectId)
 {
     return new Promise(function(resolve, reject)
     {
         
-        let sqlQuery = "SELECT NAME, SURNAME, EMAIL, PHONE FROM users WHERE DISPLAY_NAME=? AND PASSWD=?";
-        connectionProvider.query(sqlQuery, [userInfo.display_name, userInfo.passwd],
+        let sqlQuery = "SELECT MESSAGE FROM messages WHERE SUBJECTID=?";
+        connectionProvider.query(sqlQuery, [subjectId],
             
             function(error, results)
             {
@@ -41,4 +41,4 @@ function getUserQuery(connectionProvider, userInfo)
     })
 }
 
-module.exports = getUser;
+module.exports = getMessages;

@@ -1,0 +1,37 @@
+footer {
+    background-color: #1d1d1b;
+    color: #f7f7f7;
+    position: relative;
+    padding-top: 0.625rem;
+    padding-bottom: 0.625rem;
+}
+
+.container-texto {
+    display: flex;
+    justify-content: center;
+}
+
+.container-button {
+    justify-content: center;
+    display: flex;
+}
+
+.container-button a {
+    background-color: blue;
+    padding: 10px 20px 10px 20px;
+    border-radius: 10px;
+    color: #f7f7f7;
+    text-decoration: none;
+}
+
+.container-button a:hover {
+    color: #f7f7f7;
+    box-shadow: 0 0 8px 5px rgba(255, 255, 255, 0.05);
+}
+
+.container-Copyright {
+    display: flex;
+    justify-content: center;
+    margin: 10px;
+}
+
