@@ -1,7 +1,14 @@
 let repoAbstractFactory = require("../../infrastructure/repositories/repoAbstractFactory.js")
     insertUser = require("./insertUser.js");
     deleteUser = require("./deleteUser.js");
+    deleteMessage = require("./deleteMessage.js");
+    deleteResponse = require("./deleteResponse.js");
+    deleteSubject = require("./deleteSubject.js")
     updateUser = require("./updateUser.js");
+    insertMessage = require("./insertMessage.js");
+    insertResponse = require("./insertResponse.js");
+    insertSubject = require("./insertSubject.js");
+    updateSubject = require("./updateSubject.js")
 
 let commandsFactory =
 {
@@ -17,9 +24,51 @@ let commandsFactory =
         return action;
     },
 
+    deleteMessage: function()
+    {
+        let action = deleteMessage(getConnectionProvider());
+        return action;
+    },
+
+    deleteResponse: function()
+    {
+        let action = deleteResponse(getConnectionProvider());
+        return action;
+    },
+
+    deleteSubject: function()
+    {
+        let action = deleteSubject(getConnectionProvider());
+        return action;
+    },
+
     updateUser: function()
     {
         let action = updateUser(getConnectionProvider());
+        return action;
+    },
+
+    insertMessage: function()
+    {
+        let action = insertMessage(getConnectionProvider());
+        return action;
+    },
+
+    insertResponse: function()
+    {
+        let action = insertResponse(getConnectionProvider());
+        return action;
+    },
+
+    insertSubject: function()
+    {
+        let action = insertSubject(getConnectionProvider());
+        return action;
+    },
+
+    updateSubject: function()
+    {
+        let action = updateSubject(getConnectionProvider());
         return action;
     }
 

@@ -1,6 +1,8 @@
 let express = require("express"),
     app = express(),
     userApi = require("./controllers/userApi");
+    messagesApi = require("./controllers/messagesApi");
+    subjectsApi= require("./controllers/subjectsApi")
 
 app.use(function (req, res, next) {
     res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
@@ -16,6 +18,8 @@ let port = process.env.PORT || 3636;
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use("/api/users", userApi);
+app.use("/api/messages", messagesApi);
+app.use("/api/subjects", subjectsApi);
 
 
 
