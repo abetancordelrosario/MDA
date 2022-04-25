@@ -2,6 +2,7 @@ let repoAbstractFactory = require("../../infrastructure/repositories/repoAbstrac
     getUser = require("./getUser.js");
     getMessages = require("./getMessages.js");
     getSubjects = require("./getSubjects.js");
+    getResponses = require("./getResponses.js")
     
 let queriesFactory =
 {
@@ -18,6 +19,11 @@ let queriesFactory =
     getSubjects: function()
     {
         let action = getSubjects(getConnectionProvider());
+        return action
+    },
+    getResponses: function()
+    {
+        let action = getResponses(getConnectionProvider());
         return action
     }
 

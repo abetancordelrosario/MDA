@@ -21,6 +21,7 @@ describe ("Business / Command / Messages", function()
         let anyMessageInfo = {
             subjectid: 1, 
             userid: 1, 
+            title: "Titulo de prueba",
             message: "Mensaje de Prueba"
         }
         

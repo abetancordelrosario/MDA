@@ -1,0 +1,26 @@
+.container-button {
+    justify-content: center;
+    display: flex;
+}
+
+.container-button a {
+    background-color: rgb(255, 8, 0);
+    padding: 10px 20px 10px 20px;
+    border-radius: 10px;
+    color: #f7f7f7;
+    text-decoration: none;
+}
+
+.container-button a:hover {
+    color: #f7f7f7;
+    box-shadow: 0 0 8px 5px rgba(255, 255, 255, 0.05);
+}
+
+.logout-form {
+    padding: 10px;
+}
+
+.logout-button, .passwd {
+    display: flex;
+    justify-content: center;
+}

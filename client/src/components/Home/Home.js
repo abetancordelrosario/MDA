@@ -2,13 +2,22 @@ import React from 'react';
 import './Home.css'
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
+import SearchBar from '../SearchBar/SearchBar';
+import { getSubjects } from '../../services/subjectService';
 
 function Home () {
+    let subjects = [];
+    getSubjects().then(results => {
+        results.forEach(result => {
+            subjects.push(result);
+        });
+    })
+
     return (
         <div className="container-fluid">
             <Header /> 
             <div className="home-page">
-                <input type="text" className="form-control-lg col-sm-8" name="buscador" placeholder='Universidad, facultad, asignatura...'></input>
+                <SearchBar placeholder="Universidad, facultad, asignatura..." data={subjects}/>
             </div>
             <Footer />
         </div>

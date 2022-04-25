@@ -1,11 +1,37 @@
-import React from 'react';
-import './ListaConversaciones.css'
-
-const conversaciones = ["Examen Resuelto MDA", "Duda duración Sprints", "Resumen Método Scrum"];
+import React, {useState, useEffect} from 'react';
+import './ListaConversaciones.css';
+import {getMessages} from '../../services/messageService';
+import {insertMessage} from '../../services/messageService';
+import {useLocation, useParams} from 'react-router-dom';
 
 function ListaConversaciones () {
+    const params = useParams();
+    const subjectId = params.id;
+    const [messagesData, setmessagesData] = useState([]);
+    
+    useEffect(() => {
+        let filters = {
+            subjectid: subjectId
+        }
+        const messages = async () => {
+            const response = await getMessages(filters);
+            setmessagesData(response);
+        }
+        messages();
+    }, []);
 
-    const lista = <ListarConversaciones convers={conversaciones} />;
+    function handleSubmit(event) {
+        let messageInfo = {
+            subjectid: subjectId,
+            userid: sessionStorage.userId,
+            title: event.target.elements.titulo.value,
+            message: event.target.elements.mensaje.value
+        }
+
+        insertMessage(messageInfo);
+
+    }
+    
 
     return (
         <div className="foro">
@@ -14,25 +40,25 @@ function ListaConversaciones () {
             </div>
             <div class="conversaciones">
                 <p id="subtitle">Conversaciones Abiertas</p>
+                {sessionStorage.userId != 0 && (
+                    <form onSubmit={handleSubmit}>
+                        <label htmlFor="mensaje">Titulo: </label>
+                        <input id='titulo' name='titulo' type="text"></input>
+                        <label htmlFor="mensaje">Mensaje: </label>
+                        <input id='mensaje' name='mensaje' type="text"></input>
+                        <button type="submit">Añadir: </button>
+                    </form>
+                )}
                 <div class="lista-conversaciones">
-                    {lista}
+                    {messagesData.map((value,key) => {
+                        return  <div class="conversacion">
+                                     <a href={"/message/" + value.ID}><li>{value.TITLE}</li></a>
+                                </div>
+                    })}
                 </div>
             </div>
         </div>
     )
 }
 
-function ListarConversaciones(props) {
-    const convers = props.convers;
-    const listar = convers.map((conver) =>
-        <div class="conversacion">
-            <a href="# "><li>{conver}</li></a>
-        </div>
-    );
-    return (
-        <ul>{listar}</ul>
-    );
-}
-
 export default ListaConversaciones;
-

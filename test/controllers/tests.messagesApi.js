@@ -34,7 +34,6 @@ describe ("Controllers / Messages / API", function()
         await testSetupContents().givenAnyMessage({subjectid: 1, userid: 1, message: "Mensaje de Prueba"});
         await testSetupContents().givenAnyMessage({subjectid: 1, userid: 2, message: "Mensaje de Prueba 2"});
         await testSetupContents().givenAnyMessage({subjectid: 2, userid: 3, message: "Mensaje de Prueba 3"});
-        let anyUserSubjectId = 1
         
         const response = await appAgent.get("/api/messages/?subjectid=1");
         let results = JSON.parse(response.text);
@@ -49,6 +48,7 @@ describe ("Controllers / Messages / API", function()
         let anyMessageInfo = {
             subjectid: 1, 
             userid: 1, 
+            title: "Titulo de Prueba",
             message: "Mensaje de Prueba"
         }
         

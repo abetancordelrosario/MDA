@@ -82,7 +82,7 @@ function getResponses(connectionProvider, responseInfo)
             }
             else
             {
-                let responses = (results[0].length && results[0].length > 0) ? JSON.parse(results[0].RESPONSES) : [];
+                let responses = (results[0] && results[0].length && results[0].length > 0) ? JSON.parse(results[0].RESPONSES) : [];
                 resolve(responses);
             }
         })

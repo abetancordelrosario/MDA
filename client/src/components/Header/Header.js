@@ -1,6 +1,7 @@
 import React from 'react';
 import './Header.css';
 import Login from "../Login/Login";
+import Logout from "../Logout/Logout";
 import {Link} from 'react-router-dom';
 
 
@@ -14,9 +15,16 @@ function Header () {
                     </div>
                 </div>
                 <div className='col-lg-6 login'>
-                    <div id="login-button">
-                        <Login />
-                    </div>
+                    {sessionStorage.userId == 0 && (
+                        <div id="login-button">
+                            <Login />
+                        </div>
+                    )}
+                    {sessionStorage.userId != 0 && (
+                        <div id="logout-button">
+                            <Logout />
+                        </div>
+                    )}
                 </div>
             </div>
         </header>

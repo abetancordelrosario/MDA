@@ -4,6 +4,16 @@ let express = require("express"),
     commandsFactory = require("../business/commands/commandsFactory");
 
 router.route("/response")
+.get(function(request, response){
+    
+    let messageid = request.query.messageid;
+    queriesFactory.getResponses().execute(messageid)
+    .then(function(result) {
+        response.status(200).send(result);
+    }).catch(function(error) {
+        response.status(400).send("Error:" +error.message)
+    })
+})
 .post(function(request, response){
     
     let responseInfo = request.body;
@@ -28,8 +38,12 @@ router.route("/response")
 router.route("/")
 .get(function(request, response){
     
-    let subjectid = request.query.subjectid;
-    queriesFactory.getMessages().execute(subjectid)
+    let params = request.query;
+    let filters = {
+        subjectid: params.subjectid,
+        id: params.id
+    }
+    queriesFactory.getMessages().execute(filters)
     .then(function(result) {
         response.status(200).send(result);
     }).catch(function(error) {

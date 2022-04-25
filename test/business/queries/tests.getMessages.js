@@ -20,9 +20,11 @@ describe("Business / Queries / Messages", function()
     it("Should return a message for a specified subject", async() =>
     {
         await testSetupContents().givenAnyMessage({subjectid: 1, userid: 1, message: "Mensaje de Prueba"});
-        let anyUserSubjectId = 1
+        let filters = {
+            subjectid: 1
+        }
         
-        const results = await queriesFactory.getMessages().execute(anyUserSubjectId);
+        const results = await queriesFactory.getMessages().execute(filters);
         
         assert.equal(results[0].MESSAGE, "Mensaje de Prueba");
     });
@@ -32,9 +34,11 @@ describe("Business / Queries / Messages", function()
         await testSetupContents().givenAnyMessage({subjectid: 1, userid: 1, message: "Mensaje de Prueba"});
         await testSetupContents().givenAnyMessage({subjectid: 1, userid: 2, message: "Mensaje de Prueba 2"});
         await testSetupContents().givenAnyMessage({subjectid: 2, userid: 3, message: "Mensaje de Prueba 3"});
-        let anyUserSubjectId = 1
+        let filters = {
+            subjectid: 1
+        }
         
-        const results = await queriesFactory.getMessages().execute(anyUserSubjectId);
+        const results = await queriesFactory.getMessages().execute(filters);
 
         assert.equal(results.length, 2);
         assert.equal(results[0].MESSAGE, "Mensaje de Prueba");

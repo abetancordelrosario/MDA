@@ -9,6 +9,7 @@ import './App.css';
 import {BrowserRouter, Route, Routes} from 'react-router-dom';
 
 function App() {
+  localStorage.userId = 0;
   return (
       <BrowserRouter>
         <Routes>
@@ -16,6 +17,8 @@ function App() {
             <Route index element={<Home />} />
             <Route path='/register' element={<Register />} />
             <Route path='/profile/:name&:passwd&:email&:phone&:surname' element={<Profile />} />
+            <Route path='/subject/:id' element={<ListaConversaciones />} />
+            <Route path='/message/:id' element={<ListaRespuestas />} />
         </Routes>
       </BrowserRouter>
   );

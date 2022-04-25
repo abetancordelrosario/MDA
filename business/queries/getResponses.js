@@ -1,11 +1,11 @@
-let getMessages = function(connectionProvider)
+let getResponses = function(connectionProvider)
 {
     return {
-        execute: function(filters)
+        execute: function(messageId)
         {
             return new Promise(function(resolve, reject)
             {
-                getMessagesQuery(connectionProvider, filters)
+                getResponsesQuery(connectionProvider, messageId)
                 .then(function(results)
                 {
                     resolve(results);
@@ -19,20 +19,13 @@ let getMessages = function(connectionProvider)
     }
 }
 
-function getMessagesQuery(connectionProvider, filters)
+function getResponsesQuery(connectionProvider, messageId)
 {
     return new Promise(function(resolve, reject)
     {
         
-        let sqlQuery = "SELECT ID, TITLE, MESSAGE, RESPONSES FROM messages WHERE ";
-        if (filters.subjectid) {
-            sqlQuery += "SUBJECTID=" + filters.subjectid;
-        }
-        if (filters.id) {
-            sqlQuery += "ID=" + filters.id
-        }
-
-        connectionProvider.query(sqlQuery,
+        let sqlQuery = "SELECT RESPONSES FROM messages WHERE ID=?";
+        connectionProvider.query(sqlQuery, [messageId],
             
             function(error, results)
             {
@@ -48,4 +41,4 @@ function getMessagesQuery(connectionProvider, filters)
     })
 }
 
-module.exports = getMessages;
+module.exports = getResponses;
