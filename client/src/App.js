@@ -16,6 +16,7 @@ function App() {
             <Route index element={<Home />} />
             <Route path='/register' element={<Register />} />
             <Route path='/profile/:name&:passwd&:email&:phone&:surname' element={<Profile />} />
+            <Route path='/subjects' element={<ListaConversaciones />} />
         </Routes>
       </BrowserRouter>
   );
