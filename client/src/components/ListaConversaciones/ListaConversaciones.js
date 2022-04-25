@@ -3,6 +3,7 @@ import './ListaConversaciones.css';
 import {getMessages} from '../../services/messageService';
 import {insertMessage} from '../../services/messageService';
 import {useLocation, useParams} from 'react-router-dom';
+import Header from '../Header/Header';
 
 function ListaConversaciones () {
     const params = useParams();
@@ -35,6 +36,7 @@ function ListaConversaciones () {
 
     return (
         <div className="foro">
+            <Header/>
             <div class="title">
                 <h2>Conversaciones</h2>
             </div>

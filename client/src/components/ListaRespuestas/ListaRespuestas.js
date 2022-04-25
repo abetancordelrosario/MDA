@@ -3,7 +3,8 @@ import './ListaRespuestas.css';
 import {getMessages} from '../../services/messageService';
 import { getResponses } from '../../services/responseService';
 import {insertResponse} from '../../services/responseService';
-import {useLocation, useParams} from 'react-router-dom';
+import {useParams} from 'react-router-dom';
+import Header from '../Header/Header';
 
 function ListaRespuestas () {
 
@@ -42,7 +43,9 @@ function ListaRespuestas () {
     }
 
     return (
+        
         <div className="foro">
+            <Header/>
             <div class="title">
                 <h2>Conversaciones</h2>
             </div>
