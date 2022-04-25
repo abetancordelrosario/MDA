@@ -14,16 +14,16 @@ const Login = () =>  {
 
     const handleSubmit = (event) => {
         event.preventDefault()
-        
+
         let userData = {
             display_name: event.target.elements.usuario.value,
             passwd: md5(event.target.elements.contra.value)
         }
         let results = getUser(userData)
-        
+
         results.then(value => {
             // console.log(value[0].NAME);
-            // console.log(value[0].SURNAME)   
+            // console.log(value[0].SURNAME)
             // console.log(value[0].EMAIL)
             // console.log(value[0].PHONE)
             navigate(`/profile/${value[0].NAME}&${value[0].SURNAME}&${value[0].EMAIL}&${value[0].PHONE}&${value[0].SURNAME}`)
@@ -40,12 +40,12 @@ const Login = () =>  {
             <form onSubmit={handleSubmit}>
                 <div className="form-outline mb-4">
                 <label className="form-label" htmlFor="form2Example1">Usuario</label>
-                    <input 
-                        type="text" 
-                        id="form2Example1" 
-                        className="form-control" 
+                    <input
+                        type="text"
+                        id="form2Example1"
+                        className="form-control"
                         name="usuario"
-                        />                 
+                        />
                 </div>
 
                 <div className="form-outline mb-4">
