@@ -15,7 +15,7 @@ let insertResponse = function(connectionProvider)
                     }
 
                     if (responses && responses.length > 0) {
-                        let lastResponse = Math.max.apply(Math, responses.map(function(o) { return o.response; }));
+                        let lastResponse = Math.max.apply(Math, responses.map(function(o) { return o.id; }));
                         messageResponse = {
                             id: lastResponse + 1,
                             text: responseInfo.response
