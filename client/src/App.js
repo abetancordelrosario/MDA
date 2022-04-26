@@ -9,7 +9,6 @@ import './App.css';
 import {BrowserRouter, Route, Routes} from 'react-router-dom';
 
 function App() {
-  sessionStorage.userId = 0;
   return (
       <BrowserRouter>
         <Routes>

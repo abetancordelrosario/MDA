@@ -11,7 +11,7 @@ const Logout = () =>  {
     const handleSubmit = (event) => {
         event.preventDefault()
 
-        sessionStorage.userId = 0;
+        sessionStorage.clear();
         navigate(`/`)
 
     }

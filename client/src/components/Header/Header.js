@@ -15,12 +15,12 @@ function Header () {
                     </div>
                 </div>
                 <div className='col-lg-6 login'>
-                    {sessionStorage.userId == 0 && (
+                    {!sessionStorage.userId && (
                         <div id="login-button">
                             <Login />
                         </div>
                     )}
-                    {sessionStorage.userId != 0 && (
+                    {sessionStorage.userId && (
                         <div id="logout-button">
                             <Logout />
                         </div>
