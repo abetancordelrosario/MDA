@@ -42,7 +42,7 @@ function ListaConversaciones () {
             </div>
             <div class="conversaciones">
                 <p id="subtitle">Conversaciones Abiertas</p>
-                {sessionStorage.userId != 0 && (
+                {sessionStorage.userId && (
                     <form onSubmit={handleSubmit}>
                         <label htmlFor="mensaje">Titulo: </label>
                         <input id='titulo' name='titulo' type="text"></input>

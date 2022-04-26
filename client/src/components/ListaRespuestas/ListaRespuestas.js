@@ -61,7 +61,7 @@ function ListaRespuestas () {
                 })}
             </div>
             <div class="respuestas">
-                {sessionStorage.userId != 0 && (
+                {sessionStorage.userId && (
                     <form onSubmit={handleSubmit}>
                         <label htmlFor="respuesta">Respuesta: </label>
                         <input id='respuesta' name='respuesta' type="text"></input>
