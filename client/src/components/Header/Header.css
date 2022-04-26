@@ -24,7 +24,7 @@ header {
     padding-right: 0.625rem;
 }
 
-#login-button {
+#login-button, #logout-button {
     display: inline-block;
     background-color: blue;
     padding: 10px 20px 10px 20px;
@@ -37,38 +37,23 @@ header {
     text-decoration: none;
 }
 
+#logout-button:hover {
+    box-shadow: 0 0 8px 5px rgba(0, 0, 0, 0.15);
+    text-decoration: none;
+}
+
 #login-button a {
+    text-decoration: none;
+    color: #f7f7f7;
+}
+
+#logout-button a {
     text-decoration: none;
     color: #f7f7f7;
 }
 
 #login-button a:hover {
     text-decoration: underline;
-}
-
-.logout {
-    display: flex;
-    justify-content: right;
-    align-items: center;
-    padding-right: 0.625rem;
-}
-
-#logout-button {
-    display: inline-block;
-    background-color: blue;
-    padding: 10px 20px 10px 20px;
-    border-radius: 10px;
-    margin-right: 50px
-}
-
-#logout-button:hover {
-    box-shadow: 0 0 8px 5px rgba(0, 0, 0, 0.15);
-    text-decoration: none;
-}
-
-#logout-button a {
-    text-decoration: none;
-    color: #f7f7f7;
 }
 
 #logout-button a:hover {
