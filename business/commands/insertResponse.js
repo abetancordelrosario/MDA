@@ -9,13 +9,12 @@ let insertResponse = function(connectionProvider)
                 .then(function(results)
                 {
                     let responses = results;
-                    console.log(responses);
                     let messageResponse = {
                         id: 1,
                         text: responseInfo.response
                     }
 
-                    if (responses.length > 0) {
+                    if (responses && responses.length > 0) {
                         let lastResponse = Math.max.apply(Math, responses.map(function(o) { return o.response; }));
                         messageResponse = {
                             id: lastResponse + 1,
@@ -83,7 +82,7 @@ function getResponses(connectionProvider, responseInfo)
             }
             else
             {
-                let responses = (results) ? JSON.parse(results[0].RESPONSES) : [];
+                let responses = (results && results[0].RESPONSES) ? JSON.parse(results[0].RESPONSES) : [];
                 resolve(responses);
             }
         })

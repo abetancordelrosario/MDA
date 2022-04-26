@@ -31,8 +31,7 @@ describe ("Controllers / User / API", function()
         const response = await appAgent.get("/api/users").send(anyUserInfo);
         let results = JSON.parse(response.text);
         
-        assert.equal(results[0].DISPLAY_NAME, "display1");
-        assert.equal(results[0].PASSWD, password);
+        assert.equal(results[0].NAME, "nombre1");
     });
 
     it("Should insert user info", async() =>

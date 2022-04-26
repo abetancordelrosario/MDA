@@ -3,15 +3,12 @@ import Footer from '../Footer/Footer';
 import React from 'react';
 import './Register.css';
 import {createUser} from '../../services/userService'
-import {Link, useNavigate} from 'react-router-dom';
 let md5 = require("md5")
 
 
-const Register = () => {
+class Register extends React.Component {
 
-    const navigate = useNavigate()
-
-    const handleSubmit = (event) => {
+    handleSubmit = (event) => {
         event.preventDefault()
         
         let userInfo = {
@@ -27,14 +24,14 @@ const Register = () => {
             time_stamp: "17/03/2022 12:12:25"
         }
         createUser(userInfo)
-        navigate("/")
     }
 
+    render() {
         return (
             <div>
             <Header />
             <div className="register-page">
-                <form onSubmit={handleSubmit}>
+                <form onSubmit={this.handleSubmit}>
                     <div className="register-form">
                         <h2>¡Regístrate!</h2>
                         <div class="col">
@@ -80,7 +77,7 @@ const Register = () => {
             <Footer />
             </div>
         )
-    
+    }
 
 }
 export default Register;

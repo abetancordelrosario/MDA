@@ -9,7 +9,7 @@ import './App.css';
 import {BrowserRouter, Route, Routes} from 'react-router-dom';
 
 function App() {
-  localStorage.userId = 0;
+  sessionStorage.userId = 0;
   return (
       <BrowserRouter>
         <Routes>
