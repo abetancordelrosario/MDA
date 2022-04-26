@@ -12,7 +12,11 @@ const Logout = () =>  {
         event.preventDefault()
 
         sessionStorage.clear();
-        navigate(`/`)
+        if (window.location.pathname == "/") {
+            window.location.reload(false);
+        } else {
+            navigate(`/`);
+        }
 
     }
 
