@@ -1,11 +1,11 @@
 let getSubjects = function(connectionProvider)
 {
     return {
-        execute: function()
+        execute: function(subjectId)
         {
             return new Promise(function(resolve, reject)
             {
-                getSubjectsQuery(connectionProvider)
+                getSubjectsQuery(connectionProvider, subjectId)
                 .then(function(results)
                 {
                     resolve(results);
@@ -19,12 +19,17 @@ let getSubjects = function(connectionProvider)
     }
 }
 
-function getSubjectsQuery(connectionProvider)
+function getSubjectsQuery(connectionProvider, subjectId)
 {
     return new Promise(function(resolve, reject)
     {
         
         let sqlQuery = "SELECT * FROM Subjects";
+
+        if (subjectId) {
+            sqlQuery+=" WHERE ID=" + subjectId;
+        }
+
         connectionProvider.query(sqlQuery,
             
             function(error, results)

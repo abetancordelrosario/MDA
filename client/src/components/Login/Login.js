@@ -22,11 +22,8 @@ const Login = () =>  {
         let results = getUser(userData)
 
         results.then(value => {
-            // console.log(value[0].NAME);
-            // console.log(value[0].SURNAME)
-            // console.log(value[0].EMAIL)
-            // console.log(value[0].PHONE)
             sessionStorage.setItem("userId", value[0].ID);
+            sessionStorage.setItem("userPoints", value[0].POINTS);
             navigate(`/profile/${value[0].NAME}&${value[0].SURNAME}&${value[0].EMAIL}&${value[0].PHONE}&${value[0].SURNAME}`)
         }).catch(err => {
             alert("No existe la cuenta")

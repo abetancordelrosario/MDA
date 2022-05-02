@@ -1,6 +1,13 @@
-export async function getSubjects() {
+export async function getSubjects(subjectId) {
 
-    const response = await fetch(`http://localhost:3636/api/subjects`, {
+    let url= `http://localhost:3636/api/subjects`;
+
+    if(subjectId)
+    {
+        url +="?subjectId=" + subjectId;
+    }
+
+    const response = await fetch(url, {
         method: 'GET',
         headers: {'Content-Type': 'application/json'}
     })

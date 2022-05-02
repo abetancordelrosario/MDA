@@ -27,7 +27,7 @@ function insertUserQuery(connectionProvider, userInfo)
         let repoTable = "users";
         let repoColumns = "NAME, SURNAME, DISPLAY_NAME, EMAIL, PHONE, PASSWD, ROL, POINTS, ORGANIZATION, TIME_STAMP";
         let sqlQuery = "INSERT INTO "+repoTable+" ("+repoColumns+") VALUES (?,?,?,?,?,?,?,?,?,?)";
-        connectionProvider.query(sqlQuery, [userInfo.name, userInfo.surname, userInfo.display_name, userInfo.email, userInfo.phone, userInfo.passwd, userInfo.rol, userInfo.points, userInfo.organization, userInfo.time_stamp],
+        connectionProvider.query(sqlQuery, [userInfo.name, userInfo.surname, userInfo.display_name, userInfo.email, userInfo.phone, userInfo.passwd, userInfo.rol, 0, userInfo.organization, userInfo.time_stamp],
             
             function(error)
             {

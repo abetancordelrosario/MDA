@@ -1,8 +1,10 @@
 let express = require("express"),
     app = express(),
+    fileupload = require("express-fileupload"),
     userApi = require("./controllers/userApi");
     messagesApi = require("./controllers/messagesApi");
-    subjectsApi= require("./controllers/subjectsApi")
+    subjectsApi= require("./controllers/subjectsApi");
+    filesApi= require("./controllers/filesApi");
 
 app.use(function (req, res, next) {
     res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
@@ -15,11 +17,13 @@ app.use(function (req, res, next) {
 let port = process.env.PORT || 3636;
 
 
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(express.json({limit: '50mb'}));
+app.use(express.urlencoded({limit: '50mb'}));
+app.use(fileupload());
 app.use("/api/users", userApi);
 app.use("/api/messages", messagesApi);
 app.use("/api/subjects", subjectsApi);
+app.use("/api/files", filesApi);
 
 
 

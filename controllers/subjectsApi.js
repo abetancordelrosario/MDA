@@ -5,7 +5,8 @@ let express = require("express"),
     
 router.route("/")
 .get(function(request,response){
-    queriesFactory.getSubjects().execute()
+    let subjectId = request.params.subjectId;
+    queriesFactory.getSubjects().execute(subjectId)
     .then(function(result) {
         response.status(200).send(result);
     }).catch(function(error) {
