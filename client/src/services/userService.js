@@ -1,5 +1,3 @@
-
-
 export async function getUser(data) {
 
     const response = await fetch(`http://localhost:3636/api/users`, {
@@ -9,8 +7,6 @@ export async function getUser(data) {
     })
     let results = response.json();
     return results
-
-    
     
 }
 
@@ -28,5 +24,14 @@ export async function createUser(data) {
           } else {
             alert("El usuario ya existe")
           }
+    })
+}
+
+export async function updateUserPoints(pointsInfo) {
+
+    await fetch(`http://localhost:3636/api/users/points`, {
+        method: 'PUT',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(pointsInfo)
     })
 }

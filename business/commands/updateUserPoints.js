@@ -30,7 +30,7 @@ function updateUserPointsQuery(connectionProvider, pointsInfo)
         } 
 
         if (pointsInfo.type === "subtract") {
-            pointsToModify = parseInt(pointsInfo.userPoints) - 1;
+            pointsToModify = parseInt(pointsInfo.userPoints);
         }
 
         connectionProvider.query(sqlQuery, [pointsToModify, pointsInfo.userId],

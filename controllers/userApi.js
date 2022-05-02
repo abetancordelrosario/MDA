@@ -3,6 +3,18 @@ let express = require("express"),
     queriesFactory = require("../business/queries/queriesFactory"),
     commandsFactory = require("../business/commands/commandsFactory");
 
+router.route("/points")
+.put(function(request, response){
+
+    let pointsInfo = request.body;
+
+    commandsFactory.updateUserPoints().execute(pointsInfo)
+    .then(function(result) {
+        response.status(200).send("File Uploaded");
+    }).catch(function(error) {
+        response.status(400).send("Error:" +error.message)
+    })
+});
 
 router.route("/")
 .get(function(request, response){
