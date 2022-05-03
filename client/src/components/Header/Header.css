@@ -1,6 +1,6 @@
 header {
     background-color: #f7f7f7;
-    border-bottom: 2px solid blue;
+    border-bottom: 5px solid #09f;
     position: relative;
     padding-top: 0.625rem;
     padding-bottom: 0.625rem;
@@ -14,7 +14,10 @@ header {
 
 #brand-logo a {
     text-decoration: none;
-    color: blue;
+    color: white;
+    background-color: #09f;
+    padding: 5px 10px;
+    border-radius: 10px
 }
 
 .login {
@@ -26,10 +29,11 @@ header {
 
 #login-button {
     display: inline-block;
-    background-color: blue;
+    background-color: #09f;
     padding: 10px 20px 10px 20px;
     border-radius: 10px;
-    margin-right: 50px
+    margin-right: 50px;
+    transition: 0.5s;
 }
 
 #login-button:hover {
@@ -40,10 +44,6 @@ header {
 #login-button a {
     text-decoration: none;
     color: #f7f7f7;
-}
-
-#login-button a:hover {
-    text-decoration: underline;
 }
 
 @media screen and (max-width: 991px) {

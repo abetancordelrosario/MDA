@@ -12,7 +12,7 @@ function App() {
   return (
     <div className="container-fluid">
       <Header />
-      <ListaRespuestas />
+      <Home />
       <Footer />
     </div>
   );
