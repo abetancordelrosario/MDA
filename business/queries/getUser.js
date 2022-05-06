@@ -24,7 +24,7 @@ function getUserQuery(connectionProvider, userInfo)
     return new Promise(function(resolve, reject)
     {
         
-        let sqlQuery = "SELECT ID, NAME, SURNAME, EMAIL, PHONE, POINTS FROM users WHERE DISPLAY_NAME=? AND PASSWD=?";
+        let sqlQuery = "SELECT ID, NAME, SURNAME, EMAIL, PHONE, POINTS, TIME_STAMP  FROM users WHERE DISPLAY_NAME=? AND PASSWD=?";
         connectionProvider.query(sqlQuery, [userInfo.display_name, userInfo.passwd],
             
             function(error, results)

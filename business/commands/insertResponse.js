@@ -1,3 +1,4 @@
+let moment = require("moment");
 let insertResponse = function(connectionProvider)
 {
     return {
@@ -8,17 +9,22 @@ let insertResponse = function(connectionProvider)
                 getResponses(connectionProvider, responseInfo)
                 .then(function(results)
                 {
+                    var fecha = (new Date(Date.now())).toISOString();
+                    var fechaFinal = moment(fecha).format('DD-MM-YYYY HH:mm:ss');
                     let responses = results;
                     let messageResponse = {
                         id: 1,
-                        text: responseInfo.response
+                        text: responseInfo.response,
+                        time_stamp: fechaFinal
                     }
 
                     if (responses && responses.length > 0) {
                         let lastResponse = Math.max.apply(Math, responses.map(function(o) { return o.id; }));
                         messageResponse = {
                             id: lastResponse + 1,
-                            text: responseInfo.response
+                            text: responseInfo.response,
+                            time_stamp: fechaFinal
+
                         }
 
                     }

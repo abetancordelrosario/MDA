@@ -13,7 +13,7 @@ function Home () {
         });
     })
 
-    console.log(__dirname);
+    
 
     return (
         <div className="container-fluid">

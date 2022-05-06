@@ -24,7 +24,7 @@ function getMessagesQuery(connectionProvider, filters)
     return new Promise(function(resolve, reject)
     {
         
-        let sqlQuery = "SELECT ID, TITLE, MESSAGE, RESPONSES FROM messages WHERE ";
+        let sqlQuery = "SELECT ID, TITLE, MESSAGE, RESPONSES, TIME_STAMP FROM messages WHERE ";
         if (filters.subjectid) {
             sqlQuery += "SUBJECTID=" + filters.subjectid;
         }

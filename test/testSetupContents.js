@@ -88,10 +88,10 @@ function givenAnyMessage(contentInfo)
     {
         let repoConnection = repoAbstractFactory.getConnectionProvider(IS_TEST_ENV);
         let repoTable = "messages";
-        let repoColumns = "SUBJECTID, USERID, MESSAGE, RESPONSES";
+        let repoColumns = "SUBJECTID, USERID, MESSAGE, RESPONSES, TIME_STAMP";
 
-        let sql = "INSERT INTO "+repoTable+" ("+repoColumns+") VALUES (?,?,?,?)";
-        repoConnection.query(sql, [contentInfo.subjectid, contentInfo.userid, contentInfo.message, contentInfo.responses], function(error)
+        let sql = "INSERT INTO "+repoTable+" ("+repoColumns+") VALUES (?,?,?,?,?)";
+        repoConnection.query(sql, [contentInfo.subjectid, contentInfo.userid, contentInfo.message, contentInfo.responses,contentInfo.time_stamp], function(error)
         {
             if (error)
             {

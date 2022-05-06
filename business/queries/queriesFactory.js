@@ -1,8 +1,8 @@
 let repoAbstractFactory = require("../../infrastructure/repositories/repoAbstractFactory.js"),
-    getUser = require("./getUser.js");
-    getMessages = require("./getMessages.js");
-    getSubjects = require("./getSubjects.js");
-    getResponses = require("./getResponses.js")
+    getUser = require("./getUser.js"),
+    getMessages = require("./getMessages.js"),
+    getSubjects = require("./getSubjects.js"),
+    getResponses = require("./getResponses.js");
     
 let queriesFactory =
 {
