@@ -11,8 +11,9 @@ const Login = () => {
         
     }
 
-        return (
-        <Popup trigger={<a href='#!' class="container-button">Iniciar Sesión</a>} position="bottom center">
+
+        return(
+        <Popup trigger={<button className='login-button'>Iniciar Sesión</button>} position="bottom center">
             <div className="login-form">
             <form onSubmit={handleSubmit}>
                 <div className="form-outline mb-4">
@@ -48,8 +49,8 @@ const Login = () => {
                     </div>
                 </div>
 
-                <div className="login-button">
-                <button type="submit" class="btn btn-primary btn-block mb-4">Iniciar Sesión</button>
+                <div className="login-button-pop-div">
+                <button type="submit" class="login-button-pop">Iniciar Sesión</button>
                 </div>
 
                 <div className="text-center">

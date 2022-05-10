@@ -4,20 +4,20 @@ import Login from "../Login/Login";
 
 function Header () {
     return (
-        <header className="container-fluid">
-            <div className="row">
-                <div className="col-lg-6">
-                    <div id="brand-logo">
-                        <a href="/src/profile-page.js"><h1>EstuFor-U</h1></a>
-                    </div>
-                </div>
-                <div className='col-lg-6 login'>
-                    <div id="login-button">
+        <div className="header">
+            <Link to="/"><img src="./Estufor-U.png" alt="" className="logo"></img></Link>
+            <div className="buttons">
+                {!sessionStorage.userId && (
+                    <div>
                         <Login />
+                        <button className='register-button'><Link to="/register">Registrarse</Link></button>
                     </div>
-                </div>
+                )}
+                {sessionStorage.userId && (
+                    <Logout />
+                )}
             </div>
-        </header>
+        </div>
     )
 }
 

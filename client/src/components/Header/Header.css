@@ -1,65 +1,41 @@
-header {
-    background-color: #f7f7f7;
-    border-bottom: 5px solid #09f;
-    position: relative;
-    padding-top: 0.625rem;
-    padding-bottom: 0.625rem;
-}
-
-#brand-logo {
+.header {
+    background-color: #081730;
     display: flex;
-    justify-content: left;
-    margin-left: 50px;
-}
-
-#brand-logo a {
-    text-decoration: none;
-    color: white;
-    background-color: #09f;
-    padding: 5px 10px;
-    border-radius: 10px
-}
-
-.login {
-    display: flex;
-    justify-content: right;
     align-items: center;
-    padding-right: 0.625rem;
+    justify-content: space-between;
+    padding-left: 50px;
 }
 
-#login-button {
-    display: inline-block;
-    background-color: #09f;
-    padding: 10px 20px 10px 20px;
-    border-radius: 10px;
+.logo {
+    width: 120px;
+    height: 120px;
+}
+
+.buttons {
+    display: flex;
     margin-right: 50px;
-    transition: 0.5s;
 }
 
-#login-button:hover {
-    box-shadow: 0 0 8px 5px rgba(0, 0, 0, 0.15);
+.register-button {
+    background-color: #232A4E;
+    color: white;
+    padding: 9px 27px 9px 27px;
+    border-radius: 20px;
+    border: 0;
+}
+
+.register-button:hover {
+    background-color: #081730;
+    border: 2px solid #232A4E;
+    padding: 7px 25px 7px 25px;
+}
+
+.register-button a {
+    color: white;
     text-decoration: none;
 }
 
-#login-button a {
-    text-decoration: none;
-    color: #f7f7f7;
-}
-
-@media screen and (max-width: 991px) {
-    #brand-logo {
-        justify-content: center;
-        margin: 0
-    }
-
-    .login {
-        justify-content: center;
-    }
-
-    #login-button {
-        margin: 0;
-        margin-top: 20px
-    }
-
-
+.register-button a:hover {
+    color: white;
+    background-color: inherit;
 }
