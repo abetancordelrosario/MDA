@@ -26,3 +26,14 @@ export async function insertMessage(messageInfo) {
     });
     return response.json();
 }
+
+export async function deleteMessage(messageInfo) {
+
+    let url = "http://localhost:3636/api/messages/";
+    const response = await fetch(url, {
+        method: 'DELETE',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(messageInfo)
+    });
+    return response.json();
+}

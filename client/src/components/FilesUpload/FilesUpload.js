@@ -6,6 +6,7 @@ import { uploadFile } from '../../services/fileService';
 
 function FilesUpload ({subject, userId}) {
     const handleSubmit = async (event) => {
+        event.preventDefault();
         uploadFile(event.target.elements[0].files, subject, userId, sessionStorage.userPoints);
     }
     return (

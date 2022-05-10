@@ -9,6 +9,8 @@ import Editor from '../Editor/Editor'
 import FilesUpload from '../FilesUpload/FilesUpload';
 import Files from '../Files/Files';
 import { getFiles } from '../../services/fileService';
+import {deleteMessage} from '../../services/messageService';
+import moment from 'moment';
 
 function ListaConversaciones () {
     const [data, setData] = useState(null);
@@ -47,6 +49,7 @@ function ListaConversaciones () {
 function Prueba({dataPrueba, subjectId}){
 
     function handleSubmit(event) {
+        event.preventDefault();
         let messageInfo = {
             subjectid: subjectId,
             userid: sessionStorage.userId,
@@ -55,6 +58,26 @@ function Prueba({dataPrueba, subjectId}){
         }
 
         insertMessage(messageInfo);
+
+
+    }
+    function handleDelete(e, ID, TIME_STAMP){
+        e.preventDefault();
+        var fechaMensaje = moment(TIME_STAMP);
+        const fecha = (new Date(Date.now())).toISOString();
+        var fechaActual = moment(fecha);
+        var duration = moment.duration(fechaActual.diff(fechaMensaje));
+        var minutes = duration.asMinutes();
+        let messageInfo = {
+            id: ID
+        }
+
+        if (minutes < 30) {
+            
+            deleteMessage(messageInfo);
+        } else {
+            alert("Se te ha pasado el tiempo crack");
+        }
 
     }
 
@@ -86,8 +109,13 @@ function Prueba({dataPrueba, subjectId}){
                 <div class="lista-conversaciones">
                     {dataPrueba.messages.map((value,key) => {
                         return  <div class="conversacion">
-                                     <a href={"/message/" + value.ID}><li>{value.TITLE}</li></a>
-                                </div>
+                            <a href={"/message/" + value.ID}><li>{value.TITLE} {moment(value.TIME_STAMP).format('DD-MM-YYYY HH:mm')}</li></a>
+                            {sessionStorage.userId == value.USERID && (
+                                <form onSubmit={e => handleDelete(e, value.ID, value.TIME_STAMP)}>
+                                    <button type="submit">Borrar</button>
+                                </form>
+                            )}
+                        </div>
                     })}
                 </div>
                 <div class="title">
