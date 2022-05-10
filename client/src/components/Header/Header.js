@@ -1,6 +1,8 @@
 import React from 'react';
 import './Header.css';
 import Login from "../Login/Login";
+import Logout from "../Logout/Logout";
+import {Link} from 'react-router-dom';
 
 function Header () {
     return (

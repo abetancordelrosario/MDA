@@ -7,13 +7,20 @@ import ListaConversaciones from './components/ListaConversaciones/ListaConversac
 import ListaAsignaturas from './components/ListaAsignaturas/ListaAsignaturas';
 import ListaRespuestas from './components/ListaRespuestas/ListaRespuestas';
 import './App.css';
+import {BrowserRouter, Route, Routes} from 'react-router-dom';
 
 function App() {
   return (
     <div className="container-fluid">
-      <Header />
-      <Home />
-      <Footer />
+      <BrowserRouter>
+        <Routes>
+            <Route path="/" element={<App />} />
+            <Route index element={<Home />} />
+            <Route path='/register' element={<Register />} />
+            <Route path='/profile/:name&:passwd&:email&:phone&:surname' element={<Profile />} />
+            <Route path='/subjects' element={<ListaConversaciones />} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
