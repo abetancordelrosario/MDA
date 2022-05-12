@@ -30,3 +30,20 @@ export async function createUser(data) {
           }
     })
 }
+
+export async function updateUserPoints(pointsInfo) {
+
+    await fetch(`http://localhost:3636/api/users/points`, {
+        method: 'PUT',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(pointsInfo)
+    })
+}
+
+export async function updateUserPassword(data) {
+    await fetch(`http://localhost:3636/api/users`, {
+        method: 'PUT',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(data)
+    })
+}
