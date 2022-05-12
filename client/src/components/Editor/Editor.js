@@ -50,14 +50,14 @@ function Editor ({dataPrueba, subjectId}) {
     insertMessage(messageInfo);
   }
 
-  function handleSubmit(event) {
-    let responseInfo = {
-        response: event.target.elements.respuesta.value,
-        messageid: messageId
-    }
+  // function handleSubmit(event) {
+  //   let responseInfo = {
+  //       response: event.target.elements.respuesta.value,
+  //       messageid: messageId
+  //   }
 
-    insertResponse(responseInfo);
-  }
+  //   insertResponse(responseInfo);
+  // }
 
   return (
     <div>
