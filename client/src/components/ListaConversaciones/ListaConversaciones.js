@@ -5,7 +5,7 @@ import { getSubjects } from '../../services/subjectService';
 import {insertMessage} from '../../services/messageService';
 import {useLocation, useParams} from 'react-router-dom';
 import Header from '../Header/Header';
-import Editor from '../Editor/Editor'
+import Editor from '../Editor/Editor';
 import FilesUpload from '../FilesUpload/FilesUpload';
 import Files from '../Files/Files';
 import { getFiles } from '../../services/fileService';
@@ -84,21 +84,12 @@ function Prueba({dataPrueba, subjectId}){
     return (
         <div className="foro">
             <Header/>
-            <Editor/>
             <div class="title">
                 <h2>Conversaciones</h2>
             </div>
             <div class="conversaciones">
                 <p id="subtitle">Conversaciones Abiertas</p>
-                {sessionStorage.userId && (
-                    <form onSubmit={handleSubmit}>
-                        <label htmlFor="mensaje">Titulo: </label>
-                        <input id='titulo' name='titulo' type="text"></input>
-                        <label htmlFor="mensaje">Mensaje: </label>
-                        <input id='mensaje' name='mensaje' type="text"></input>
-                        <button type="submit">Añadir: </button>
-                    </form>
-                )}
+                <Editor subjectId={subjectId} TIPO="conver"/>
                 <br></br>
                 <br></br>
                 {sessionStorage.userId && (

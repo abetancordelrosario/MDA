@@ -71,8 +71,6 @@ function Editor ({dataPrueba, subjectId,TIPO}) {
     <div>
       {sessionStorage.userId && (
       <form onSubmit={handleSubmit}>
-          <label htmlFor="mensaje">Titulo: </label>
-          <input id='titulo' name='titulo' type="text"></input>
           <label htmlFor="mensaje">Mensaje: </label>
           <JoditEditor ref={editor} config={config} name="mensaje"/>
           <button type="submit">Añadir: </button>

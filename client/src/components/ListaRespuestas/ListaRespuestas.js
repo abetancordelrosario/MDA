@@ -5,6 +5,7 @@ import { getResponses } from '../../services/responseService';
 import {insertResponse} from '../../services/responseService';
 import {useParams} from 'react-router-dom';
 import Header from '../Header/Header';
+import EditorMessage from '../Editor/EditorMessage';
 
 function ListaRespuestas () {
 
@@ -32,15 +33,6 @@ function ListaRespuestas () {
         responses();
     }, []);
 
-    function handleSubmit(event) {
-        let responseInfo = {
-            response: event.target.elements.respuesta.value,
-            messageid: messageId
-        }
-
-        insertResponse(responseInfo);
-
-    }
 
     return (
         
@@ -61,13 +53,7 @@ function ListaRespuestas () {
                 })}
             </div>
             <div class="respuestas">
-                {sessionStorage.userId && (
-                    <form onSubmit={handleSubmit}>
-                        <label htmlFor="respuesta">Respuesta: </label>
-                        <input id='respuesta' name='respuesta' type="text"></input>
-                        <button type="submit">Añadir</button>
-                    </form>
-                )}
+                <EditorMessage subjectId={messageId} TIPO="message" />
                 <p id="subtitle">Respuestas</p>
                 <div class="lista-respuestas">
                     {responsesData != null && (

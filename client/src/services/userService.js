@@ -35,3 +35,11 @@ export async function updateUserPoints(pointsInfo) {
         body: JSON.stringify(pointsInfo)
     })
 }
+
+export async function updateUserPassword(data) {
+    await fetch('http://localhost:3636/api/users', {
+        method: 'PUT',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(data)
+    })
+}
