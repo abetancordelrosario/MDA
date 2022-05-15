@@ -2,13 +2,32 @@ import {React} from 'react';
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
 import './Login.css';
+import {getUser} from '../../services/userService'
+import {Link, useNavigate} from 'react-router-dom';
+let md5 = require("md5");
 
 
 const Login = () => {
-    const handleSubmit = async (e) => {
-        const username = document.getElementById("form2Example1").value;
-        const password = document.getElementById("form2Example31").value;
-        
+
+    const navigate = useNavigate();
+
+    const handleSubmit = (event) => {
+        console.log("OK");
+        event.preventDefault()
+
+        let userData = {
+            display_name: event.target.elements.usuario.value,
+            passwd: md5(event.target.elements.contra.value)
+        }
+        let results = getUser(userData)
+
+        results.then(value => {
+            sessionStorage.setItem("userId", value[0].ID);
+            sessionStorage.setItem("userPoints", value[0].POINTS);
+            navigate(`/profile/${value[0].NAME}&${value[0].SURNAME}&${value[0].EMAIL}&${value[0].PHONE}&${value[0].SURNAME}`)
+        }).catch(err => {
+            alert("No existe la cuenta")
+        });
     }
 
 
@@ -18,16 +37,17 @@ const Login = () => {
             <form onSubmit={handleSubmit}>
                 <div className="form-outline mb-4">
                 <label className="form-label" htmlFor="form2Example1">Usuario</label>
-                    <input 
-                        type="text" 
-                        id="form2Example1" 
-                        className="form-control" 
-                        />                 
+                <input
+                        type="text"
+                        id="form2Example1"
+                        className="form-control"
+                        name="usuario"
+                        />               
                 </div>
 
                 <div className="form-outline mb-4">
                     <label className="form-label" htmlFor="form2Example2">Contraseña</label>
-                    <input type="password" id="form2Example2" class="form-control" />
+                    <input type="password" id="form2Example2" class="form-control" name="contra"/>
                 </div>
 
                 <div className="row mb-4 passwd">
@@ -54,7 +74,7 @@ const Login = () => {
                 </div>
 
                 <div className="text-center">
-                    <p>¿Aún no estás registrado? <a className="link" href="#!">Regístrate</a></p>
+                    <p>¿Aún no estás registrado? <Link to="/register">Regístrate</Link></p>
                 </div>
             </form>
             </div>

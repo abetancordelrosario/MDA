@@ -3,6 +3,10 @@
     background-color: #f2f3f5;
 }
 
+p {
+    color: black;
+}
+
 .title h2 {
     font-size: 35px;
     font-weight: 700;
