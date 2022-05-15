@@ -1,8 +1,6 @@
-
 import React, {useState} from 'react';
 import "./SearchBar.css";
 import SearchIcon from "@material-ui/icons/Search";
-
 
 function SearchBar({placeholder, data}) {
 
@@ -21,6 +19,9 @@ function SearchBar({placeholder, data}) {
 
     return (
         <div className="search">
+            <div className='text'>
+                <p>Encuentra lo que buscas</p>
+            </div>
             <div className='searchInputs'> 
                 <input type="text" placeholder={placeholder} onChange={handleFilter}/>
                 <div className='searchIcon'>

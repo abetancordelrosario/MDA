@@ -1,35 +1,12 @@
-.container-button {
-    justify-content: center;
-    display: flex;
+.logout-button {
+    border: 2px solid #232A4E;
+    border-radius: 20px;
+    padding: 7px 25px 7px 25px;
+    background-color: #081730;
+    color: white;
+    margin-right: 35px;
 }
 
-.container-button a {
-    background-color: rgb(255, 8, 0);
-    padding: 10px 20px 10px 20px;
-    border-radius: 10px;
-    color: #f7f7f7;
-    text-decoration: none;
-}
-
-.container-button a:hover {
-    color: #f7f7f7;
-    box-shadow: 0 0 8px 5px rgba(255, 255, 255, 0.05);
-}
-
-.logout-form {
-    padding: 10px;
-}
-
-.logout-button, .passwd {
-    display: flex;
-    justify-content: center;
-}
-
-#logout-button {
-    background-color: blue;
-    padding: 10px 20px 10px 20px;
-}
-
-#logout-button:hover {
-    color: red;
+.logout-button:hover {
+    background-color: #232A4E;
 }

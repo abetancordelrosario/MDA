@@ -31,53 +31,54 @@ function Register() {
     }
 
     return (
-        <div>
-        <Header />
-        <div className="register-page">
-            <form onSubmit={handleSubmit}>
-                <div className="register-form">
-                    <h2>¡Regístrate!</h2>
-                    <div class="col">
-                        <label>Usuario</label>
-                        <input type="text" class="form-control" name="usuario" required></input>
-                    </div>
-                    <div class="row">
+        <div className="container-fluid">
+            <Header />
+            <div className="register-page">
+                <div className="bg-static"></div>
+                <form onSubmit={handleSubmit}>
+                    <div className="register-form">
+                        <h2>¡Regístrate!</h2>
                         <div class="col">
-                            <label>Nombre</label>
-                            <input type="text" class="form-control" name="nombre" required/>
+                            <label>Usuario</label>
+                            <input type="text" class="form-control" name="usuario" required></input>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <label>Nombre</label>
+                                <input type="text" class="form-control" name="nombre" required/>
+                            </div>
+                            <div class="col">
+                                <label>Apellidos</label>
+                                <input type="text" class="form-control" name="apellidos" required/>
+                            </div>
                         </div>
                         <div class="col">
-                            <label>Apellidos</label>
-                            <input type="text" class="form-control" name="apellidos" required/>
+                            <label>Correo Electrónico</label>
+                            <input type="email" class="form-control" name="correo" required/>
+                        </div>
+                        <div class="col">
+                            <label>Teléfono</label>
+                            <input type="text" class="form-control" name="telefono" required/>
+                        </div>
+                        <div class="col">
+                            <label>Universidad</label>
+                            <input type="text" class="form-control" name="universidad" required/>
+                        </div>
+                        <div class="col">
+                            <label>Contraseña</label>
+                            <input type="password" class="form-control" name="contra" required/>
+                        </div>
+                        <div class="col">
+                            <label>Repite tu contraseña</label>
+                            <input type="password" class="form-control" name="repcontra" required/>
                         </div>
                     </div>
-                    <div class="col">
-                        <label>Correo Electrónico</label>
-                        <input type="email" class="form-control" name="correo" required/>
+                    <div className="container-button">
+                        <button className="register-button" type="submit">Confirmar</button>
                     </div>
-                    <div class="col">
-                        <label>Teléfono</label>
-                        <input type="text" class="form-control" name="telefono" required/>
-                    </div>
-                    <div class="col">
-                        <label>Universidad</label>
-                        <input type="text" class="form-control" name="universidad" required/>
-                    </div>
-                    <div class="col">
-                        <label>Contraseña</label>
-                        <input type="password" class="form-control" name="contra" required/>
-                    </div>
-                    <div class="col">
-                        <label>Repite tu contraseña</label>
-                        <input type="password" class="form-control" name="repcontra" required/>
-                    </div>
-                </div>
-                <div className="login-button">
-                    <button type="submit">Regístrate</button>
-                </div>
-            </form>
-        </div>
-        <Footer />
+                </form>
+            </div>
+            <Footer />
         </div>
     )
 

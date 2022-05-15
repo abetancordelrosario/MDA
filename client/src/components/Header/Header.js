@@ -7,27 +7,20 @@ import {Link} from 'react-router-dom';
 
 function Header () {
     return (
-        <header className="container-fluid">
-            <div className="row">
-                <div className="col-lg-6">
-                    <div id="brand-logo">
-                        <Link to="/"><h1>EstuFor-U</h1></Link>
+        <div className="header">
+            <Link to="/"><img src="/Estufor-U.png" alt="" className="logo"></img></Link>
+            <div className="buttons">
+                {!sessionStorage.userId && (
+                    <div>
+                        <Login />
+                        <button className='register-button'><Link to="/register">Registrarse</Link></button>
                     </div>
-                </div>
-                <div className='col-lg-6 login'>
-                    {!sessionStorage.userId && (
-                        <div id="login-button">
-                            <Login />
-                        </div>
-                    )}
-                    {sessionStorage.userId && (
-                        <div id="logout-button">
-                            <Logout />
-                        </div>
-                    )}
-                </div>
+                )}
+                {sessionStorage.userId && (
+                    <Logout />
+                )}
             </div>
-        </header>
+        </div>
     )
 }
 

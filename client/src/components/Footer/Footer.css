@@ -1,9 +1,8 @@
 footer {
-    background-color: #1d1d1b;
+    background-color: #081730;
     color: #f7f7f7;
-    position: relative;
-    padding-top: 0.625rem;
-    padding-bottom: 0.625rem;
+    padding-top: 1.8rem;
+    padding-bottom: 1.8rem;
 }
 
 .container-texto {
@@ -16,22 +15,30 @@ footer {
     display: flex;
 }
 
-.container-button a {
-    background-color: blue;
-    padding: 10px 20px 10px 20px;
-    border-radius: 10px;
-    color: #f7f7f7;
-    text-decoration: none;
-}
-
-.container-button a:hover {
-    color: #f7f7f7;
-    box-shadow: 0 0 8px 5px rgba(255, 255, 255, 0.05);
-}
-
 .container-Copyright {
     display: flex;
     justify-content: center;
     margin: 10px;
 }
 
+.register-button-footer {
+    border-radius: 20px;
+    border: 2px solid #232a4e;
+    padding: 7px 25px 7px 25px;
+    background-color: #081730;
+}
+
+.register-button-footer:hover {
+    border: 2px solid #081730;
+    background-color: #232a4e;
+}
+
+.register-button-footer a {
+    color: white;
+    text-decoration: none;
+}
+
+.register-button-footer a:hover {
+    color: white;
+    background-color: inherit;
+}

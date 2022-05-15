@@ -22,9 +22,7 @@ const Logout = () =>  {
 
 
         return(
-            <div className="logout-form">
-                <button id="logout-button" onClick={handleSubmit}>LogOut</button>
-            </div>
+            <button className="logout-button" onClick={handleSubmit}>Cerrar Sesión</button>
     )
 }
 

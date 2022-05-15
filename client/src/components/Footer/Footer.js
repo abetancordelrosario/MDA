@@ -10,7 +10,7 @@ function Footer () {
                 <h2>¡Empecemos!</h2>
             </div>
             <div className="container-button">
-                <Link to="/register">Regístrate</Link>
+                <button className="register-button-footer"><Link to="/register">Regístrate</Link></button>
             </div>
             <div className="container-Copyright">
                 <span>Copyright © 2022  Estufor-U. All rights reserved</span>
