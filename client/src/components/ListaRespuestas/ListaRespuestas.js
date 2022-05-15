@@ -49,7 +49,7 @@ function ListaRespuestas () {
             </div>
             <div class="message">
                 {messagesData.map((value,key) => {
-                    return  <p>{value.MESSAGE}</p>           
+                    return <div dangerouslySetInnerHTML={{__html: value.MESSAGE}} />             
                 })}
             </div>
             <div class="respuestas">
