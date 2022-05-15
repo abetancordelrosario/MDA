@@ -59,7 +59,7 @@ function ListaRespuestas () {
                     {responsesData != null && (
                         <div>
                             {responsesData.map((value,key) => {
-                                return  <p>{value.text}</p> 
+                                return  <div dangerouslySetInnerHTML={{__html: value.text}} /> 
                             })}
                         </div>
                     )}
