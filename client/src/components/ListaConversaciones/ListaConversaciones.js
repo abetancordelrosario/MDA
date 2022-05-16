@@ -83,21 +83,14 @@ function Prueba({dataPrueba, subjectId}){
 
     return (
         <div className="foro">
+            <div className="bg-static"></div>
             <Header/>
-            <div class="title">
-                <h2>Conversaciones</h2>
-            </div>
             <div class="conversaciones">
-                <p id="subtitle">Conversaciones Abiertas</p>
-                <Editor subjectId={subjectId} TIPO="conver"/>
-                <br></br>
-                <br></br>
-                {sessionStorage.userId && (
-                    <FilesUpload subject={dataPrueba.subject} userId={sessionStorage.userId}/>
-                )}
-                <br></br>
-                <br></br>
-                <div class="lista-conversaciones">
+                <div className="title">
+                    <h2>Conversaciones</h2>
+                </div>
+                <p className="subtitle">Conversaciones abiertas</p>
+                <div class="listado">
                     {dataPrueba.messages.map((value,key) => {
                         return  <div class="conversacion">
                             <a href={"/message/" + value.ID}><li>{value.TITLE} {moment(value.TIME_STAMP).format('DD-MM-YYYY HH:mm')}</li></a>
@@ -109,10 +102,23 @@ function Prueba({dataPrueba, subjectId}){
                         </div>
                     })}
                 </div>
+                <br></br>
+                <br></br>
+                <p className="subtitle">Crear conversación nueva</p>
+                <Editor subjectId={subjectId} TIPO="conver"/>
+                <br></br>
+                <br></br>
                 <div class="title">
                     <h2>Archivos</h2>
                 </div>
+                <p className="subtitle">Archivos subidos</p>
                 {dataPrueba.files && <Files subject={dataPrueba.subject} files={dataPrueba.files}/>}
+                <br></br>
+                <br></br>
+                <p className="subtitle">Subir archivo</p>
+                {sessionStorage.userId && (
+                    <FilesUpload subject={dataPrueba.subject} userId={sessionStorage.userId}/>
+                )}
             </div>
         </div>
     )

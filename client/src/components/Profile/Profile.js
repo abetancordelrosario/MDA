@@ -33,8 +33,9 @@ function Profile () {
 
     return (
         <div>
-           <Header /> 
+            <Header /> 
             <div className="profile-page">
+                <div className="bg-static"></div>
                 <form onSubmit={handleSubmit}>
                     <div className="datos-form">
                         <h2>Datos</h2>
@@ -73,8 +74,8 @@ function Profile () {
                                 <label>Repetir Contraseña</label>
                                 <input type="passwd" class="form-control" name="renew"/>
                             </div>
-                            <div>
-                                <button type="submit">Confirmar</button>
+                            <div className="container-button">
+                                <button className="register-button" type="submit">Confirmar</button>
                             </div>
                     </div>
                 </form>

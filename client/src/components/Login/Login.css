@@ -25,11 +25,16 @@
     margin-bottom: 15px;
 }
 
-.link {
+.login-button-pop:hover {
+    background-color: #081730;
+    border-color: #232A4E;
+}
+
+.login-form a {
     color: #081730;
 }
 
-.link:hover {
-    color: #232A4E;
-    background-color: inherit;
+.login-form a:hover {
+    color: grey;
+    background-color: white;
 }

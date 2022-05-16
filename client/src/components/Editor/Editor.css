@@ -1,0 +1,30 @@
+.form-editor {
+    background-color: white;
+    padding: 15px;
+    border-radius: 20px;
+    box-shadow: 0 0 8px 10px rgb(0, 0, 0, 0.05);
+}
+
+label {
+    margin-right: 10px;
+}
+
+.submit-button {
+    color: white;
+    margin-top: 20px;
+    font-size: 18px;
+    border-radius: 20px;
+    border: 2px solid #232a4e;
+    padding: 7px 25px 7px 25px;
+    background-color: #081730;
+}
+
+.submit-button:hover {
+    border: 2px solid #081730;
+    background-color: #232a4e;
+}
+
+#titulo {
+    border-color: #232a4e;
+    background-color: rgb(0, 0, 0, 0.05);
+}

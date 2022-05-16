@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import JoditEditor from "jodit-react";
+import './Editor.css'
 import {insertMessage} from '../../services/messageService';
 import {insertResponse} from '../../services/responseService';
 
@@ -70,12 +71,14 @@ function Editor ({dataPrueba, subjectId,TIPO}) {
   return (
     <div>
       {sessionStorage.userId && (
-      <form onSubmit={handleSubmit}>
+      <form className="form-editor" onSubmit={handleSubmit}>
           <label htmlFor="mensaje">Titulo: </label>
           <input id='titulo' name='titulo' type="text"></input>
+          <br></br>
+          <br></br>
           <label htmlFor="mensaje">Mensaje: </label>
           <JoditEditor ref={editor} config={config} name="mensaje"/>
-          <button type="submit">Añadir: </button>
+          <button className="submit-button" type="submit">Añadir: </button>
       </form>
     )}
     </div>

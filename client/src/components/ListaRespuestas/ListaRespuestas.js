@@ -37,33 +37,25 @@ function ListaRespuestas () {
     return (
         
         <div className="foro">
+            <div className='bg-static'></div>
             <Header/>
-            <div class="title">
-                <h2>Conversaciones</h2>
-            </div>
-            <div class="messageTitle">
-                <br></br>
-                <h3>{messagesData.map((value,key) => {
-                        return  <p>{value.TITLE}</p>
-                    })}</h3>
-            </div>
-            <div class="message">
-                {messagesData.map((value,key) => {
-                    return <div dangerouslySetInnerHTML={{__html: value.MESSAGE}} />             
-                })}
-            </div>
-            <div class="respuestas">
-                <EditorMessage subjectId={messageId} TIPO="message" />
-                <p id="subtitle">Respuestas</p>
-                <div class="lista-respuestas">
+            <div className='respuestas'>
+                <div class="title">
+                    <h2>Crear Conversación</h2>
+                </div>
+                <p className="subtitle">Respuestas</p>
+                <div class="listado">
                     {responsesData != null && (
-                        <div>
+                        <div className='respuesta'>
                             {responsesData.map((value,key) => {
                                 return  <p>{value.text}</p> 
                             })}
                         </div>
                     )}
                 </div>
+                <br></br>
+                <p className="subtitle">Responder</p>
+                <EditorMessage subjectId={messageId} TIPO="message" />
             </div>
         </div>
     )

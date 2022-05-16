@@ -37,7 +37,7 @@ function Files ({subject, files}) {
 
     return (
 
-        <div>
+        <div className='listado'>
             {files.map((value,key) => {
                 return  <div class="conversacion">
                             <label onClick={() => handleSubmit(value)}>{value}</label>
