@@ -10,9 +10,11 @@ function FilesUpload ({subject, userId}) {
         uploadFile(event.target.elements[0].files, subject, userId, sessionStorage.userPoints);
     }
     return (
-        <form onSubmit={handleSubmit}>
+        <form className="form-upload" onSubmit={handleSubmit}>
             <input name='fileInput' type="file"></input>
-            <button type="submit">Subir: </button>
+            <br></br>
+            <br></br>
+            <button className="submit-button" type="submit">Subir</button>
         </form>
     )
 }

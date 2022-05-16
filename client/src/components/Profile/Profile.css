@@ -3,7 +3,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image: url("fondo.jpg");
 }
 
 .datos-form, .passwd-form {

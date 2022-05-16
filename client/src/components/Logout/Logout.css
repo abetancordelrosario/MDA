@@ -4,9 +4,27 @@
     padding: 7px 25px 7px 25px;
     background-color: #081730;
     color: white;
-    margin-right: 35px;
+    display: block;
+    margin: auto;
+    margin-bottom: 10px;
 }
 
 .logout-button:hover {
     background-color: #232A4E;
+}
+
+.logout-popup {
+    margin: block;
+    justify-content: center;
+    align-items: center;
+}
+
+.logout-button a {
+    color: white;
+    text-decoration: none;
+}
+
+.logout-button a:hover {
+    background-color: inherit;
+    color: inherit;
 }

@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import JoditEditor from "jodit-react";
 import {insertMessage} from '../../services/messageService';
 import {insertResponse} from '../../services/responseService';
-
+import './EditorMessage.css';
 
 
 function Editor ({dataPrueba, subjectId,TIPO}) {
@@ -70,10 +70,10 @@ function Editor ({dataPrueba, subjectId,TIPO}) {
   return (
     <div>
       {sessionStorage.userId && (
-      <form onSubmit={handleSubmit}>
+      <form className="form-editor" onSubmit={handleSubmit}>
           <label htmlFor="mensaje">Mensaje: </label>
           <JoditEditor ref={editor} config={config} name="mensaje"/>
-          <button type="submit">Añadir: </button>
+          <button className="submit-button" type="submit">Añadir: </button>
       </form>
     )}
     </div>

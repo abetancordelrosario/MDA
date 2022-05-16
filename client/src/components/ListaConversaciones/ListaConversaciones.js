@@ -11,8 +11,6 @@ import Files from '../Files/Files';
 import { getFiles } from '../../services/fileService';
 import {deleteMessage} from '../../services/messageService';
 import moment from 'moment';
-import Messages from '../Messages/Messages';
-import Pagination from '../Pagination/Pagination';
 
 function ListaConversaciones () {
     const [data, setData] = useState(null);
@@ -50,44 +48,77 @@ function ListaConversaciones () {
 
 function Prueba({dataPrueba, subjectId}){
 
-    const [currentPage, setCurrentPage] = useState(1);
-    const [messagesPerPage, setMessagesPerPage] = useState(5);
+    function handleSubmit(event) {
+        event.preventDefault();
+        let messageInfo = {
+            subjectid: subjectId,
+            userid: sessionStorage.userId,
+            title: event.target.elements.titulo.value,
+            message: event.target.elements.mensaje.value
+        }
 
-    const indexOfLastMessage = currentPage * messagesPerPage;
-    const indexOfFirstMessage = indexOfLastMessage - messagesPerPage;
-    const currentMessages = dataPrueba.messages.slice(indexOfFirstMessage, indexOfLastMessage);
+        insertMessage(messageInfo);
 
-    const paginate = pageNumber => setCurrentPage(pageNumber);
+
+    }
+    function handleDelete(e, ID, TIME_STAMP){
+        e.preventDefault();
+        var fechaMensaje = moment(TIME_STAMP);
+        const fecha = (new Date(Date.now())).toISOString();
+        var fechaActual = moment(fecha);
+        var duration = moment.duration(fechaActual.diff(fechaMensaje));
+        var minutes = duration.asMinutes();
+        let messageInfo = {
+            id: ID
+        }
+
+        if (minutes < 30) {
+            
+            deleteMessage(messageInfo);
+        } else {
+            alert("Se te ha pasado el tiempo crack");
+        }
+
+    }
 
     return (
         <div className="foro">
+            <div className="bg-static"></div>
             <Header/>
-            <div class="title">
-                <h2>Conversaciones</h2>
-            </div>
             <div class="conversaciones">
-                <p id="subtitle">Conversaciones Abiertas</p>
+                <div className="title">
+                    <h2>Conversaciones</h2>
+                </div>
+                <p className="subtitle">Conversaciones abiertas</p>
+                <div class="listado">
+                    {dataPrueba.messages.map((value,key) => {
+                        return  <div class="conversacion">
+                            <a href={"/message/" + value.ID}><li>{value.TITLE} {moment(value.TIME_STAMP).format('DD-MM-YYYY HH:mm')}</li></a>
+                            {sessionStorage.userId == value.USERID && (
+                                <form onSubmit={e => handleDelete(e, value.ID, value.TIME_STAMP)}>
+                                    <button className="submit-button-delete" type="submit">Borrar</button>
+                                </form>
+                            )}
+                        </div>
+                    })}
+                </div>
+                <br></br>
+                <br></br>
+                <p className="subtitle">Crear conversación nueva</p>
                 <Editor subjectId={subjectId} TIPO="conver"/>
                 <br></br>
                 <br></br>
-                {sessionStorage.userId && (
-                    <FilesUpload subject={dataPrueba.subject} userId={sessionStorage.userId}/>
-                )}
-                <br></br>
-                <br></br>
-                <div class="lista-conversaciones">
-                    <Messages messages={currentMessages}/>
-                    <br/>
-                    <Pagination
-                        messagesPerPage={messagesPerPage}
-                        totalMessages={dataPrueba.messages.length}
-                        paginate={paginate}
-                    />
-                </div>
                 <div class="title">
                     <h2>Archivos</h2>
                 </div>
+                <p className="subtitle">Archivos subidos</p>
                 {dataPrueba.files && <Files subject={dataPrueba.subject} files={dataPrueba.files}/>}
+                <br></br>
+                <br></br>
+                <p className="subtitle">Subir archivo</p>
+                {sessionStorage.userId && (
+                    <FilesUpload subject={dataPrueba.subject} userId={sessionStorage.userId}/>
+                )}
             </div>
         </div>
     )
