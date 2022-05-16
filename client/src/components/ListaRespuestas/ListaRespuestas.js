@@ -40,9 +40,19 @@ function ListaRespuestas () {
             <div className='bg-static'></div>
             <Header/>
             <div className='respuestas'>
-                <div class="title">
-                    <h2>Crear Conversación</h2>
+                <div class="messageTitle">
+                    <br></br>
+                    <h3>{messagesData.map((value,key) => {
+                        return  <p>{value.TITLE}</p>
+                    })}</h3>
                 </div>
+                <div class="message">
+                    {messagesData.map((value,key) => {
+                        return <div dangerouslySetInnerHTML={{__html: value.MESSAGE}} />             
+                    })}
+                </div>
+                <br></br>
+                <br></br>
                 <p className="subtitle">Respuestas</p>
                 <div class="listado">
                     {responsesData != null && (

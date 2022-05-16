@@ -53,3 +53,11 @@
     color: inherit;
     background-color: inherit;
 }
+
+.submit-button-delete {
+    border-radius: 20px;
+    font-size: 14px;
+    color: white;
+    background-color: #081730;
+    border-color: white;
+}

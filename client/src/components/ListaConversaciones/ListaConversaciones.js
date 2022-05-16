@@ -96,7 +96,7 @@ function Prueba({dataPrueba, subjectId}){
                             <a href={"/message/" + value.ID}><li>{value.TITLE} {moment(value.TIME_STAMP).format('DD-MM-YYYY HH:mm')}</li></a>
                             {sessionStorage.userId == value.USERID && (
                                 <form onSubmit={e => handleDelete(e, value.ID, value.TIME_STAMP)}>
-                                    <button type="submit">Borrar</button>
+                                    <button className="submit-button-delete" type="submit">Borrar</button>
                                 </form>
                             )}
                         </div>

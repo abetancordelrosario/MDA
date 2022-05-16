@@ -10,3 +10,16 @@
     font-size: 18px;
     font-weight: 500;
 }
+
+.messageTitle {
+    color: white;
+}
+
+.messageTitle p {
+    font-size: 56px;
+}
+
+.message {
+    font-size: 18px;
+    font-weight: 500;
+}
