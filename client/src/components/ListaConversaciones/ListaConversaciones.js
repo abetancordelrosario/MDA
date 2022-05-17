@@ -104,8 +104,12 @@ function Prueba({dataPrueba, subjectId}){
                 </div>
                 <br></br>
                 <br></br>
-                <p className="subtitle">Crear conversación nueva</p>
-                <Editor subjectId={subjectId} TIPO="conver"/>
+                {sessionStorage.userId && (
+                    <div>
+                        <p className="subtitle">Crear conversación nueva</p>
+                        <Editor subjectId={subjectId} TIPO="conver"/>
+                    </div>
+                )}
                 <br></br>
                 <br></br>
                 <div class="title">
@@ -115,9 +119,12 @@ function Prueba({dataPrueba, subjectId}){
                 {dataPrueba.files && <Files subject={dataPrueba.subject} files={dataPrueba.files}/>}
                 <br></br>
                 <br></br>
-                <p className="subtitle">Subir archivo</p>
                 {sessionStorage.userId && (
-                    <FilesUpload subject={dataPrueba.subject} userId={sessionStorage.userId}/>
+                    <div>
+                        <p className="subtitle">Subir archivo</p>
+                        <FilesUpload subject={dataPrueba.subject} userId={sessionStorage.userId}/>
+                    </div>
+                    
                 )}
             </div>
         </div>

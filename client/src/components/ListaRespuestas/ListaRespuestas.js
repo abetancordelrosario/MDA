@@ -5,6 +5,7 @@ import { getResponses } from '../../services/responseService';
 import {insertResponse} from '../../services/responseService';
 import {useParams} from 'react-router-dom';
 import Header from '../Header/Header';
+import Footer from '../Footer/Footer';
 import EditorMessage from '../Editor/EditorMessage';
 
 function ListaRespuestas () {
@@ -64,9 +65,14 @@ function ListaRespuestas () {
                     )}
                 </div>
                 <br></br>
-                <p className="subtitle">Responder</p>
-                <EditorMessage subjectId={messageId} TIPO="message" />
+                {sessionStorage.userId && (
+                    <div>
+                        <p className="subtitle">Responder</p>
+                        <EditorMessage subjectId={messageId} TIPO="message" />
+                    </div>
+                )}
             </div>
+            <Footer />
         </div>
     )
 
