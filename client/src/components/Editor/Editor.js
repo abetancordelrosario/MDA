@@ -6,7 +6,7 @@ import {insertResponse} from '../../services/responseService';
 
 
 
-function Editor ({dataPrueba, subjectId,TIPO}) {
+function Editor ({dataPrueba, subjectId,TIPO, refresComponent}) {
   const editor = useRef(null);
 
   const config = {
@@ -78,7 +78,7 @@ function Editor ({dataPrueba, subjectId,TIPO}) {
           <br></br>
           <label htmlFor="mensaje">Mensaje: </label>
           <JoditEditor ref={editor} config={config} name="mensaje"/>
-          <button className="submit-button" type="submit">Añadir: </button>
+          <button className="submit-button" type="submit">Añadir </button>
       </form>
     )}
     </div>
