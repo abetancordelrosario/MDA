@@ -69,6 +69,11 @@ function Prueba({dataPrueba, subjectId, setRefrescomponent}){
                 </div>
                 <p className="subtitle">Conversaciones abiertas</p>
                 <div class="listado">
+                    {dataPrueba.messages == null && (
+                        <div className="respuesta">
+                            <p>No hay conversaciones abiertas</p>
+                        </div>
+                    )}
                     <Messages messages={currentMessages}/>
                     <br/>
                     <Pagination
@@ -79,15 +84,22 @@ function Prueba({dataPrueba, subjectId, setRefrescomponent}){
                 </div>
                 <br></br>
                 <br></br>
-                <p className="subtitle">Crear conversación nueva</p>
-                <Editor subjectId={subjectId} refreshComponent={setRefrescomponent} TIPO="conver"/>
+                {sessionStorage.userId && (
+                    <div>
+                        <p className="subtitle">Crear conversación nueva</p>
+                        <Editor subjectId={subjectId} refreshComponent={setRefrescomponent} TIPO="conver"/>
+                    </div>                    
+                )}
                 <br></br>
                 <br></br>
                 <div class="title">
                     <h2>Archivos</h2>
                 </div>
                 <p className="subtitle">Archivos subidos</p>
-                {dataPrueba.files && <Files subject={dataPrueba.subject} files={dataPrueba.files}/>}
+                {dataPrueba.files == null && (
+                    <div className='respuesta'>Aún no hay archivos subidos</div>
+                )}
+                {dataPrueba.files != null && <Files subject={dataPrueba.subject} files={dataPrueba.files}/>}
                 <br></br>
                 <br></br>
                 {sessionStorage.userId && (

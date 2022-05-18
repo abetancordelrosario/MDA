@@ -1,0 +1,9 @@
+.pagination a{
+    color: white;
+    background-color: #232a4e;
+}
+
+.pagination a:hover {
+    background-color: white;
+    color: #232a4e;
+}

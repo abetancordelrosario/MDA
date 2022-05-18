@@ -56,6 +56,9 @@ function ListaRespuestas () {
                 <br></br>
                 <p className="subtitle">Respuestas</p>
                 <div class="listado">
+                    {responsesData || (
+                        <div className='respuesta'>Aún no hay respuestas</div>
+                    )}
                     {responsesData != null && (
                         <div className='respuesta'>
                             {responsesData.map((value,key) => {
@@ -72,7 +75,6 @@ function ListaRespuestas () {
                     </div>
                 )}
             </div>
-            <Footer />
         </div>
     )
 

@@ -68,7 +68,7 @@ function Editor ({dataPrueba, subjectId,TIPO}) {
   }
 
   return (
-    <div>
+    <div className="editor-message">
       {sessionStorage.userId && (
       <form className="form-editor" onSubmit={handleSubmit}>
           <label htmlFor="mensaje">Mensaje: </label>
